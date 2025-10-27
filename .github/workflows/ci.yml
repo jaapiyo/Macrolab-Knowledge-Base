@@ -27,12 +27,23 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
-      
-      - name: 📂 Sync files
-        uses: milanmk/actions-file-deployer@master
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
         with:
-          remote-protocol: "sftp"
-          remote-host: "www581.your-server.de"
-          remote-user: "macrola_0"
-          remote-password: ${{ secrets.FTP_PASSWORD }}
-          remote-path: "."
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Upload gh-pages over FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_PATH: "/"
+        run: |
+          # mirror -R = upload local -> remote, --delete removes remote files not present locally
+          # exclude .git and workflow files
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" -e "mirror -R --delete --verbose --exclude-glob .git* --exclude .github . $REMOTE_PATH; quit"
