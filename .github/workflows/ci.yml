@@ -34,5 +34,5 @@ jobs:
           remote-protocol: "sftp"
           remote-host: "www581.your-server.de"
           remote-user: "macrola_0"
-          ssh-private-key: ${{ secrets.FTP_PASSWORD }}
+          remote-password: ${{ secrets.FTP_PASSWORD }}
           remote-path: "/"
