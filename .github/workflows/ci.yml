@@ -29,9 +29,10 @@ jobs:
       - run: mkdocs gh-deploy --force
       
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        uses: milanmk/actions-file-deployer@master
         with:
-          server: sftp://www581.your-server.de
-          protocol: ftps
-          username: macrola_0
-          password: ${{ secrets.FTP_PASSWORD }}
+          remote-protocol: "sftp"
+          remote-host: "www581.your-server.de"
+          remote-user: "macrola_0"
+          ssh-private-key: ${{ secrets.FTP_PASSWORD }}
+          remote-path: "/"
