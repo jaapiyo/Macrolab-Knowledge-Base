@@ -27,3 +27,10 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
+      
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: www581.your-server.de
+          username: macrola_0
+          password: ${{ secrets.FTP_PASSWORD }}
