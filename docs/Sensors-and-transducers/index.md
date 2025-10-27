@@ -1,0 +1,1 @@
+Sensors and transducers are blablabla

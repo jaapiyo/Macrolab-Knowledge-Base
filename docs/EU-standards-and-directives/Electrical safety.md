@@ -1,3 +1,0 @@
-- **IEC 60204-1**, Safety of machinery – Electrical equipment of machines – Part 1: General requirements
-- **IEC 60335-1** - Safety of electrical appliances for household and similar purposes. Meets the requirements for appliances in unattended use
-- **IEC 60601-1** - Medical electrical equipment - Part 1: General requirements for basic safety and essential performance
