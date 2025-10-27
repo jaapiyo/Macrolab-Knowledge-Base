@@ -32,5 +32,6 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: www581.your-server.de
+          protocol: ftps
           username: macrola_0
           password: ${{ secrets.FTP_PASSWORD }}
