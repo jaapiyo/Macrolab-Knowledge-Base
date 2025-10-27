@@ -43,5 +43,5 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           REMOTE_PATH: "/"
-        run: |
+        run:
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" -e "mirror -R --delete --verbose --exclude-glob .git* --exclude .github . $REMOTE_PATH; quit"
