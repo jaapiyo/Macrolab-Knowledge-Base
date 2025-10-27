@@ -35,4 +35,4 @@ jobs:
           remote-host: "www581.your-server.de"
           remote-user: "macrola_0"
           remote-password: ${{ secrets.FTP_PASSWORD }}
-          remote-path: "/"
+          remote-path: "."
