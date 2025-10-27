@@ -1,0 +1,1 @@
+Re2 is the successor to the [[Re1]] software for managing [[Controller hardware]]. The new version is also written in C++ but the GUI is now done with Dear Imgui instead of the MFC library.

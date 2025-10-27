@@ -1,0 +1,11 @@
+## CAPACITOR CHARACTERISTICS
+### TANTALUM
+A solid tantalum capacitor is the best choice for the output capacitor on the LM2987/8. Available from many sources, their typical ESR is very close to the ideal value required on the output of many LDO regulators. Tantalums also have good temperature stability: a 4.7 μF was tested and showed only a 10% decline in capacitance as the temperature was decreased from +125°C to −40°C. The ESR increased only about 2:1 over the same range of temperature. However, it should be noted that the increasing ESR at lower temperatures present in all tantalums can cause oscillations when marginal quality capacitors are used (where the ESR of the capacitor is near the upper limit of the stability range at room temperature).
+### CERAMIC
+The ESR of ceramic capacitor can be low enough to cause an LDO regulator to oscillate: a 2.2 μF
+ceramic was measured and found to have an ESR of 15 mΩ. If a ceramic capacitor is to be used on the LP2987/8 output, a 1Ω resistor should be placed in series with the capacitor to provide a minimum ESR for the regulator. A disadvantage of ceramic capacitors is that their capacitance varies a lot with temperature: Large ceramic capacitors are typically manufactured with the Z5U temperature characteristic, which results in the capacitance dropping by 50% as the temperature goes from 25°C to 80°C. This means you have to buy a capacitor with twice the minimum COUT to assure stable operation up to 80°C. 
+### ALUMINUM
+The large physical size of aluminum electrolytics makes them unsuitable for most applications.
+Their ESR characteristics are also not well suited to the requirements of LDO regulators. The ESR of a typical aluminum electrolytic is higher than a tantalum, and it also varies greatly with temperature. A typical aluminum electrolytic can exhibit an ESR increase of 50X when going from 20°C to −40°C. Also, some aluminum electrolytics can not be used below −25°C because the electrolyte will freeze.
+
+Source: *Texas Instruments LP2987, LP2988 technical datasheet*

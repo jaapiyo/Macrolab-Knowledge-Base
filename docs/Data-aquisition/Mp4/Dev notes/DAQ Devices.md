@@ -1,0 +1,1 @@
+Example implementation of different DAQ devices: https://github.com/mahilab/mahi-daq

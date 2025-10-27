@@ -1,0 +1,24 @@
+According to ISO 12100:2010, drafting information for use is an integral part of the design of a machine. 
+## Writing an instruction handbook
+
+According to ISO 20607:2019 the content of a handbook shall be structured according to the following example. An instruction handbook for a user/operator doesn't need to contain all of these sections.
+
+| Section                                                 | Content                                                                                                                                                                                                             |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Basic parts of an instruction<br>handbook (see 5.2.1)   | Title page<br>Table of contents<br>Introduction to/purpose of this instruction handbook                                                                                                                             |
+| Safety (see 5.2.2)                                      | General safety information and general safety instructions                                                                                                                                                          |
+| Machine overview (see 5.2.3)                            | Machine description<br>Intended use<br>Key machine specifications<br>Controls and displays descriptions<br>Floor plan/layout                                                                                        |
+| Transportation, handling<br>and storage (see 5.2.4)     | Transporting, handling and storing the machine and/or the components                                                                                                                                                |
+| Assembly, installation and<br>commissioning (see 5.2.5) | Assembly/integration of the machine<br>Positioning of the machine<br>Mechanical, pneumatic, hydraulic and electrical installation<br>Check and test of safety systems<br>Installation check<br>Commissioning        |
+| Original equipment manufacturer settings (see 5.2.6)    | Mechanical settings and synchronization<br>Safety-related (setting) parameters<br>Pneumatic, hydraulic, electrical and vacuum settings<br>Other settings                                                            |
+| Operation (see 5.2.7)                                   | Operating modes<br>Machine start-up and shut-down<br>Sequence or chronology of operations<br>Other operating instructions, if applicable                                                                            |
+| Product or capacity changeover (see 5.2.8)              | General product or capacity changeover information<br>Product-specific set-up information                                                                                                                           |
+| Inspection, testing and<br>maintenance (see 5.2.9)      | Maintenance instructions                                                                                                                                                                                            |
+| Cleaning and sanitizing (see 5.2.10)                    | Cleaning and/or sanitizing of the machine                                                                                                                                                                           |
+| Fault finding/troubleshooting and repair (see 5.2.11)   | General fault finding/troubleshooting and repair information<br>Troubleshooting chart (electrical engineering)<br>Troubleshooting of electrical sensors, vacuum systems, pneumatic systems and<br>hydraulic systems |
+| Dismantling, disabling and<br>scrapping (see 5.2.12)    | Dismantling, disabling and scrapping instructions                                                                                                                                                                   |
+| Documents and drawings (see 5.2.13)                     | Documents, drawings and parts list                                                                                                                                                                                  |
+| Index, glossary, annexes                                | See 5.2.14 to 5.2.16                                                                                                                                                                                                |
+
+*Source: ISO 20607:2019 (Safety of machinery - Instruction handbook - General drafting principles). References refer to sections of the standard.*
+
