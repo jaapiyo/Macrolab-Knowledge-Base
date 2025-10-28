@@ -51,7 +51,7 @@ Here `EStr` is the string and `ECnt` the number of bytes (characters) received.
 
 Sending data to the serial device is simply done with `ComPuts()`.
 ``` lua
-    ComPuts(ComIndex, "GET")
+ComPuts(ComIndex, "GET")
 ```
 Here the characters `GET\n` are sent to the serial device. Note the LF (newline, `\n`) that's also transmitted at the end of the string.
 

@@ -1,0 +1,1 @@
+Many devices use obscure or slightly different methods for communication. Making them talk to our software is something that we often have to figure out in our lab. Here you'll find a collection of device-specific information on data formatting, and connection details.

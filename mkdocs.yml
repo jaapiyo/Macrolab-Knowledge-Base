@@ -12,7 +12,8 @@ theme:
     - navigation.instant.progress
     - navigation.tabs
     - navigation.indexes
-    - content.action.edit
+    # - content.action.edit
+    - content.code.copy
 
 copyright: Copyright &copy; 2025 TU Delft Faculty of Civil Engineering and Geosciences. All rights reserved.
 extra:
@@ -40,11 +41,20 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 extra_javascript:
-  - javascripts/katex.js
-  - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+# - javascripts/katex.js
+# - https://unpkg.com/katex@0/dist/katex.min.js
+# - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - javascripts/temml.js
+  - https://unpkg.com/temml@0/dist/temml.min.js
+  # - https://unpkg.com/temml@0/dist/contrib/auto-render.min.js
 
 extra_css:
-  - https://unpkg.com/katex@0/dist/katex.min.css
+# - https://unpkg.com/katex@0/dist/katex.min.css
+  # - https://unpkg.com/temml@0/dist/Temml-Asana.css
   - stylesheets/extra.css
+  - stylesheets/Temml-Asana.css
