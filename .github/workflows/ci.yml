@@ -51,7 +51,7 @@ jobs:
         onlyNewer: true
         settings: 'sftp:auto-confirm=yes'
         # Mirror command options
-        localDir: '/site'
+        localDir: '.'
         remoteDir: '.'
         reverse: true
         ignoreFile: '.lftp_ignore'
