@@ -58,3 +58,5 @@ extra_css:
   # - https://unpkg.com/temml@0/dist/Temml-Asana.css
   - stylesheets/extra.css
   - stylesheets/Temml-Asana.css
+
+site_dir: '.'
