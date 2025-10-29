@@ -30,6 +30,7 @@ jobs:
 
   upload:
     name: "Upload generated site via SFTP"
+    needs: generate
     runs-on: ubuntu-latest
     steps:
 
