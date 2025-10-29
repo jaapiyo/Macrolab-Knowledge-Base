@@ -649,7 +649,7 @@ Often the <em>Nyquist–Shannon sampling theorem</em> is brought up as a means t
 Often our measured data is plagued with noise. 50 Hz interference from our grid-power, mechanical vibration in the measurement setups, resonances and harmonics etc.</p>
 <p>In order to get rid of these interferences we would like to filter our signals. This can be done in the analog domain using electronic filters like an <a href="https://en.wikipedia.org/wiki/RC_circuit">RC-filter</a>. However this gives us limited flexibility. What if we are not getting a good looking signal our of our transducers and we would like to change the filter constants? We can't easily do that with our analog solution.</p>
 <p>That's why we decide to oversample during our data acquisition and perform digital signal processing on the samples afterwards.</p>
-<p><img alt="title.png" src="../../../https:/github.com/berndporr/iir1/blob/master/title.png?raw=true">
+<p><img alt="title.png" src="../../../assets/external/github.com/berndporr/iir1/blob/master/title.854323e3.png">
 \
 A great implementation of IIR-filters is written by <em>Bernd Porr</em> and published on <a href="https://github.com/berndporr/iir1">GitHub</a>. The library is a continuation on ealier work by <em>Vinnie Falco</em> (<a href="https://github.com/berndporr/iir1">GitHub</a>). The image above shows an example of EEG data with 50 Hz noise being filtered out effectively and without impacting the signal of interest.</p>
 <h2 id="devices">Devices</h2>
