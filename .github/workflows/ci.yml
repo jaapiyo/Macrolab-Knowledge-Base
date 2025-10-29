@@ -7,7 +7,8 @@ on:
 permissions:
   contents: write
 jobs:
-  deploy:
+  generate:
+    name: "Generate static website"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,32 +28,30 @@ jobs:
 
       - run: mkdocs gh-deploy --force
 
-      # - name: Install lftp
-      #   run: sudo apt-get update && sudo apt-get install -y lftp
+  upload:
+    name: "Upload generated site via SFTP"
+    runs-on: ubuntu-latest
+    steps:
 
-      # - name: Upload gh-pages over FTP
-      #   env:
-      #     FTP_HOST: ${{ secrets.FTP_HOST }}
-      #     FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-      #     FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-      #     REMOTE_PATH: "/"
-      #   run:
-      #     lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_HOST" -e "mirror -R --delete --verbose -x .git* -x .github . $REMOTE_PATH; quit"
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: gh-pages
 
-      - name: Deploy files via SFTP
-        uses: pressidium/lftp-mirror-action@v1
-        with:
-          # SFTP credentials
-          host: ${{ secrets.FTP_HOST }}
-          port: 22
-          user: ${{ secrets.FTP_USERNAME }}
-          pass: ${{ secrets.FTP_PASSWORD }}
-          # lftp settings
-          onlyNewer: true
-          settings: 'sftp:auto-confirm=yes'
-          # Mirror command options
-          localDir: '.'
-          remoteDir: '.'
-          reverse: true
-          ignoreFile: '.lftp_ignore'
-          options: '--verbose'
+    - name: Deploy files via SFTP
+      uses: pressidium/lftp-mirror-action@v1
+      with:
+        # SFTP credentials
+        host: ${{ secrets.FTP_HOST }}
+        port: 22
+        user: ${{ secrets.FTP_USERNAME }}
+        pass: ${{ secrets.FTP_PASSWORD }}
+        # lftp settings
+        onlyNewer: true
+        settings: 'sftp:auto-confirm=yes'
+        # Mirror command options
+        localDir: '/site'
+        remoteDir: '.'
+        reverse: true
+        ignoreFile: '.lftp_ignore'
+        options: '--verbose'
