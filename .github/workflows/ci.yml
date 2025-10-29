@@ -33,13 +33,13 @@ jobs:
       - run: mkdocs gh-deploy --force
 
       - name: Checkout gh-pages
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: gh-pages
           fetch-depth: 0
-          sparse-checkout: |
-            docs
-            includes
+          # sparse-checkout: |
+          #   docs
+          #   includes
 
       # - name: Install lftp
       #   run: sudo apt-get update && sudo apt-get install -y lftp
