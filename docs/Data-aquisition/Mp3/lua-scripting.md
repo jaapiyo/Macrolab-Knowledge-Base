@@ -1,3 +1,8 @@
+---
+title: Lua scripting
+description: Scripting functionality to integrate complex extentions into Mp3
+---
+
 ## Boilerplate
 Create a new file in the `C:\Mp3Prog\Control` folder and give it a sensible name and the `.lua` extension. Then copy and paste the boilerplate code from below.
 ```lua
@@ -21,15 +26,15 @@ end
 
 print(this, " end")
 ```
-This code gets it's own source filename from Lua's [debug library](https://www.lua.org/pil/23.1.html), and prints this to Mp3's [[script output]].
+This code gets it's own source filename from Lua's [debug library](https://www.lua.org/pil/23.1.html), and prints this to Mp3's [script output]().
 
 ### Main loop
-What is the reason this exists?
+Lua code is executed on the TimeBase-timer in Mp3, normally set at 100 ms. The `AllowRunning(this)` function returns `true` when Mp3 starts processing the lua script. At the end of your main loop in the script the `yield()` function then returns to the regular Mp3 code execution.
 
 ## Serial communication
 Often you want to manage a serial device with the script. Pretty much everything is possible to build that way and we've seen some crazy things being done.
 
-A serial device doesn't need to be added to the [[devices]] in Mp3, it can be opened from the script like done below. Add this code to your setup.
+If a serial device requires more complex interaction, it can be opened from the script like done below. Add this code to your setup.
 ``` lua
 local port = 3 -- COM port number on Windows
 local ComIndex = 1 -- local reference to the com-port object (0-5 are available)
@@ -53,7 +58,7 @@ Sending data to the serial device is simply done with `ComPuts()`.
 ``` lua
 ComPuts(ComIndex, "GET")
 ```
-Here the characters `GET\n` are sent to the serial device. Note the LF (newline, `\n`) that's also transmitted at the end of the string.
+Here the characters `GET\r\n` are sent to the serial device. Note the CR+LF chars (`\r\n`) that are also transmitted at the end of the string.
 
 ## Tokenizing
 Sometimes a bunch of data has to be received at once. This data can be formatted sequentially with a separator character in between the data points. Getting this data from the string can be done with the `Tokenize()` command.
@@ -82,4 +87,4 @@ This code reads numbers separated by semicolons and puts them into Mp3 [[channel
 ```
 49.19;11.467;1.337\r
 ```
-These 3 numbers are automatically parsed to floats by the `tonumber()` command.
+These three numbers are automatically parsed to floats by the `tonumber()` command. With the `ChanPutVal()` function these values will be written to channels in Mp3.

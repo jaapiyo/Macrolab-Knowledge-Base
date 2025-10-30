@@ -1,4 +1,6 @@
 site_name: Macrolab Knowledge Base
+site_description: Knowledge base for the Macrolab at TU Delft faculty of Civil Engineering and Geosciences
+
 site_url: https://kb.macrolab.nl
 repo_url: https://github.com/jaapiyo/Macrolab-Knowledge-Base
 edit_uri: edit/main/docs/
@@ -44,6 +46,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
+  - pymdownx.blocks.caption
 
 extra_javascript:
 # - javascripts/katex.js
