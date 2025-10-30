@@ -6,9 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Scripting functionality to integrate complex extentions into Mp3">
       
       
-        <link rel="canonical" href="https://kb.macrolab.nl/Data-aquisition/Mp3/LUA%20scripting%20snippets/">
+      
+        <link rel="canonical" href="https://kb.macrolab.nl/Data-aquisition/Mp3/lua-scripting/">
       
       
       
@@ -18,7 +20,7 @@
     
     
       
-        <title>LUA scripting snippets - Macrolab Knowledge Base</title>
+        <title>Lua scripting - Macrolab Knowledge Base</title>
       
     
     
@@ -92,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LUA scripting snippets
+              Lua scripting
             
           </span>
         </div>
@@ -547,7 +549,7 @@
   
 
 
-  <h1>LUA scripting snippets</h1>
+  <h1>Lua scripting</h1>
 
 <h2 id="boilerplate">Boilerplate</h2>
 <p>Create a new file in the <code>C:\Mp3Prog\Control</code> folder and give it a sensible name and the <code>.lua</code> extension. Then copy and paste the boilerplate code from below.
@@ -571,12 +573,12 @@
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nb">print</span><span class="p">(</span><span class="nv">this</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; end&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-This code gets it's own source filename from Lua's <a href="https://www.lua.org/pil/23.1.html">debug library</a>, and prints this to Mp3's [[script output]].</p>
+This code gets it's own source filename from Lua's <a href="https://www.lua.org/pil/23.1.html">debug library</a>, and prints this to Mp3's <a href="">script output</a>.</p>
 <h3 id="main-loop">Main loop</h3>
-<p>What is the reason this exists?</p>
+<p>Lua code is executed on the TimeBase-timer in Mp3, normally set at 100 ms. The <code>AllowRunning(this)</code> function returns <code>true</code> when Mp3 starts processing the lua script. At the end of your main loop in the script the <code>yield()</code> function then returns to the regular Mp3 code execution.</p>
 <h2 id="serial-communication">Serial communication</h2>
 <p>Often you want to manage a serial device with the script. Pretty much everything is possible to build that way and we've seen some crazy things being done.</p>
-<p>A serial device doesn't need to be added to the [[devices]] in Mp3, it can be opened from the script like done below. Add this code to your setup.
+<p>If a serial device requires more complex interaction, it can be opened from the script like done below. Add this code to your setup.
 <div class="language-lua highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="c1">-- COM port number on Windows</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ComIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">-- local reference to the com-port object (0-5 are available)</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -596,7 +598,7 @@ Here <code>EStr</code> is the string and <code>ECnt</code> the number of bytes (
 <p>Sending data to the serial device is simply done with <code>ComPuts()</code>.
 <div class="language-lua highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ComPuts</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-Here the characters <code>GET\n</code> are sent to the serial device. Note the LF (newline, <code>\n</code>) that's also transmitted at the end of the string.</p>
+Here the characters <code>GET\r\n</code> are sent to the serial device. Note the CR+LF chars (<code>\r\n</code>) that are also transmitted at the end of the string.</p>
 <h2 id="tokenizing">Tokenizing</h2>
 <p>Sometimes a bunch of data has to be received at once. This data can be formatted sequentially with a separator character in between the data points. Getting this data from the string can be done with the <code>Tokenize()</code> command.</p>
 <p>In the setup add:
@@ -620,7 +622,7 @@ And at the top of the main loop:
 This code reads numbers separated by semicolons and puts them into Mp3 [[channels]] sequentially. A single data frame might look like this.
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>49.19;11.467;1.337\r
 </span></code></pre></div>
-These 3 numbers are automatically parsed to floats by the <code>tonumber()</code> command.</p>
+These three numbers are automatically parsed to floats by the <code>tonumber()</code> command. With the <code>ChanPutVal()</code> function these values will be written to channels in Mp3.</p>
 
 
 
@@ -643,7 +645,7 @@ These 3 numbers are automatically parsed to floats by the <code>tonumber()</code
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2025 15:18:03 UTC">October 28, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2025 16:48:22 UTC">October 30, 2025</span>
   </span>
 
     

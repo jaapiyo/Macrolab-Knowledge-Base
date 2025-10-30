@@ -6,23 +6,25 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-      
-      
-        <link rel="canonical" href="https://kb.macrolab.nl/Control-systems/Controller%20hardware/">
-      
+        <meta name="description" content="Info about exporting datafiles using the CSV format">
       
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+        <link rel="canonical" href="https://kb.macrolab.nl/Data-aquisition/Mp3/csv-files/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Controller hardware - Macrolab Knowledge Base</title>
+        <title>CSV data export - Macrolab Knowledge Base</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
       
       
 
@@ -35,11 +37,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../stylesheets/Temml-Asana.css">
+      <link rel="stylesheet" href="../../../stylesheets/Temml-Asana.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -58,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#control2" class="md-skip">
+        <a href="#exporting-a-datafile" class="md-skip">
           Skip to content
         </a>
       
@@ -72,7 +74,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Macrolab Knowledge Base" class="md-header__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
+    <a href="../../.." title="Macrolab Knowledge Base" class="md-header__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -92,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Controller hardware
+              CSV data export
             
           </span>
         </div>
@@ -177,7 +179,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../macrolab" class="md-tabs__link">
+      <a href="../../../macrolab" class="md-tabs__link">
         
   
   
@@ -196,7 +198,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../data-aquisition" class="md-tabs__link">
+      <a href="../../../data-aquisition" class="md-tabs__link">
         
   
   
@@ -215,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../control-systems" class="md-tabs__link">
+      <a href="../../../control-systems" class="md-tabs__link">
         
   
   
@@ -234,7 +236,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../sensors-and-transducers" class="md-tabs__link">
+      <a href="../../../sensors-and-transducers" class="md-tabs__link">
         
   
   
@@ -253,7 +255,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../electronics" class="md-tabs__link">
+      <a href="../../../electronics" class="md-tabs__link">
         
   
   
@@ -272,7 +274,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../hydraulics" class="md-tabs__link">
+      <a href="../../../hydraulics" class="md-tabs__link">
         
   
   
@@ -307,7 +309,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Macrolab Knowledge Base" class="md-nav__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
+    <a href="../../.." title="Macrolab Knowledge Base" class="md-nav__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -337,7 +339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab" class="md-nav__link">
+      <a href="../../../macrolab" class="md-nav__link">
         
   
   
@@ -359,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition" class="md-nav__link">
+      <a href="../../../data-aquisition" class="md-nav__link">
         
   
   
@@ -381,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems" class="md-nav__link">
+      <a href="../../../control-systems" class="md-nav__link">
         
   
   
@@ -403,7 +405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sensors-and-transducers" class="md-nav__link">
+      <a href="../../../sensors-and-transducers" class="md-nav__link">
         
   
   
@@ -425,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../electronics" class="md-nav__link">
+      <a href="../../../electronics" class="md-nav__link">
         
   
   
@@ -447,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hydraulics" class="md-nav__link">
+      <a href="../../../hydraulics" class="md-nav__link">
         
   
   
@@ -479,41 +481,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#control2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Control2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#control4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Control4
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#control-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Control 5
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -532,13 +501,40 @@
   
 
 
-  <h1>Controller hardware</h1>
-
-<h2 id="control2">Control2</h2>
-<p>LOOP1-4: 24 V input</p>
-<h2 id="control4">Control4</h2>
-<h2 id="control-5">Control 5</h2>
-<p>Successor to [[#Control2]]</p>
+<h1 id="exporting-a-datafile">Exporting a datafile</h1>
+<p>When recording data in Mp3, measurements are stored to disk in binary format with the extension <code>*.mdt</code>. These files can only be opened with specific software. </p>
+<p>In order to use the data for further analysis you must export this data. Exporting can be done by to <code>Tools</code> → <code>Export datafile</code>. The <code>DataFile Export</code> window wil open. </p>
+<figure>
+<p><img alt="" src="../../../media/export_datafile_dialog.png" /></p>
+<figcaption>
+<p>Export datafile dialog in Mp3</p>
+</figcaption>
+</figure>
+<h1 id="csv-file-structure">CSV file structure</h1>
+<p>The exported files are structured as follows:</p>
+<ul>
+<li>First row has the filename</li>
+<li>Second row lists the names of the columns</li>
+<li>Third row denotes the mode of the channel</li>
+</ul>
+<p>See an example below.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>DataFile;temp_humi_log000
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Index;Date;Time;Counter;Temp 1;Humi 1;Temp 2;Humi 2;Temp 3;Humi 3;Temp 4;Humi 4;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> ; ; ; ;Filtered;Filtered;Filtered;Filtered;Filtered;Filtered;Filtered;Filtered;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        0;45730.730333; 0.000000;        1;  22.000000;  27.900000;  22.100000;  27.800000;  20.900000;  28.500000;  21.000000;  28.900000;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        1;45730.732639;199.227000;        1;  21.800000;  28.100000;  21.900000;  27.900000;  21.000000;  28.400000;  21.100000;  28.900000;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        2;45730.736111;499.227000;        1;  21.700000;  28.100000;  21.800000;  28.000000;  21.200000;  28.200000;  21.200000;  28.800000;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        3;45730.739583;799.227000;        1;  21.600000;  28.100000;  21.800000;  27.900000;  21.200000;  28.000000;  21.200000;  28.700000;
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        4;45730.743056;1099.227000;        1;  21.600000;  27.800000;  21.700000;  27.600000;  21.300000;  27.700000;  21.300000;  28.500000;
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        5;45730.746528;1399.227000;        1;  21.500000;  27.800000;  21.700000;  27.600000;  21.300000;  27.800000;  21.300000;  28.700000;
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>...
+</span></code></pre></div>
+<p>The columns <code>Index</code>, <code>Date</code>, <code>Time</code> and <code>Counter</code> are always present. The rest of the columns depend on the profile setup in Mp3.</p>
+<p>The <code>Index</code> value is an incremental number starting at 0 for the first sample.</p>
+<p>The <code>Date</code> value denotes the number of days passed since 01-01-1900. The decimal part is in fractions of a full day.</p>
+<p>The <code>Time</code> value denotes the number of seconds passed since 00:00 of the day in the <code>Date</code> field.</p>
+<p>The <code>Counter</code> value indicates a number of counts that can be setup in the profile in Mp3.</p>
+<h1 id="python">Python</h1>
 
 
 
@@ -561,7 +557,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2025 14:09:49 UTC">October 27, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2025 16:48:22 UTC">October 30, 2025</span>
   </span>
 
     
@@ -571,7 +567,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2025 14:09:49 UTC">October 27, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2025 16:48:22 UTC">October 30, 2025</span>
   </span>
 
     
@@ -635,14 +631,14 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.indexes", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../../javascripts/temml.js"></script>
+        <script src="../../../javascripts/temml.js"></script>
       
-        <script src="../../assets/external/unpkg.com/temml@0/dist/temml.min.js"></script>
+        <script src="../../../assets/external/unpkg.com/temml@0/dist/temml.min.js"></script>
       
     
   </body>

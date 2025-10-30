@@ -2,174 +2,178 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kb.macrolab.nl/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Control-systems/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
-         <loc>https://kb.macrolab.nl/Control-systems/Controller%20hardware/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <loc>https://kb.macrolab.nl/Control-systems/Controller-hardware/</loc>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
-         <loc>https://kb.macrolab.nl/Control-systems/Load%20protect%20vs.%20load%20limit/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <loc>https://kb.macrolab.nl/Control-systems/Load-protect-vs.-load-limit/</loc>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Control-systems/PID/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Control-systems/Tuning/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Control-systems/Re1/Re1/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Control-systems/Re2/Development%20notes/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Control-systems/Re2/Re2%20-%20Controller%20HMI/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/Devices/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/Devices/U1731B/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
-         <loc>https://kb.macrolab.nl/Data-aquisition/Mp3/LUA%20scripting%20snippets/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <loc>https://kb.macrolab.nl/Data-aquisition/Mp3/csv-files/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://kb.macrolab.nl/Data-aquisition/Mp3/lua-scripting/</loc>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/Mp4/Features/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/Mp4/Dev%20notes/DAQ%20Devices/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/Mp4/Dev%20notes/GLFW%20-%20Drag%20and%20drop%20files/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/Mp4/Dev%20notes/Multi-viewport/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Data-aquisition/NI%20DAQMX/Synchronization%20between%20multiple%20USB%20DAQMX%20devices/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
-         <loc>https://kb.macrolab.nl/Electronics/Ethernet-IP%20for%20communication%20between%20devices/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <loc>https://kb.macrolab.nl/Electronics/Ethernet-IP-for-communication-between-devices/</loc>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Electronics/Power%20supply%20considerations/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Electronics/product-design-guidelines/D%20sub%20connectors/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Electronics/product-design-guidelines/Design%20examples/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Hydraulics/Axial%20piston%20variable%20pump/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Hydraulics/Hydraulic%20Manifold/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Hydraulics/Hydraulics/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Hydraulics/Servovalve/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/Force%20direction%20convention/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/Kees%20van%20Beek/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/Standard%20connector%20pinouts/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/3D%20Printing/Bambu%20Lab%20X1E%203D%20printer/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/Digital-Image-Correlation/Sony%20Mirrorless%20Cameras/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/EU-standards-and-directives/CE%20Compliance/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/EU-standards-and-directives/Electrical%20safety/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/EU-standards-and-directives/Hydraulic%20fluid%20power/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/EU-standards-and-directives/Safety%20of%20machinery/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Macrolab/EU-standards-and-directives/Technical%20documentation/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Sensors-and-transducers/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Sensors-and-transducers/Accelerometers/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Sensors-and-transducers/Displacement%20transducers/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Sensors-and-transducers/Force%20transducers/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Sensors-and-transducers/Geophones/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://kb.macrolab.nl/Sensors-and-transducers/Strain%20gauges/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
 </urlset>
