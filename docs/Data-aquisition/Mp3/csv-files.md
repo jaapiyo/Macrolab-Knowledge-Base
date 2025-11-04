@@ -45,4 +45,18 @@ The `Time` value denotes the number of seconds passed since 00:00 of the day in 
 
 The `Counter` value indicates a number of counts that can be setup in the profile in Mp3.
 
-# Python
+# Python example
+Importing CSV files from Mp3 into Python is straightforward. Using the Pandas library it is also quite fast. See an example program below.
+
+```python
+import pandas as pd
+
+filename = "\Calibration_20250312T172141.csv"
+cols = ["Index", "LVDT", "Displacement Stage"]
+datafile = pd.read_csv("C:\mp3prog\CsvOutput"+ filename, sep=';', header=1, usecols=cols, index_col= "Index")
+datafile = datafile.drop(datafile.index[0])
+df = datafile.astype(float)
+```
+
+!!! Todo
+    Add example to show how to parse date and time info into python compatible datetime formats.`

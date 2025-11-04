@@ -7,10 +7,9 @@ $$\epsilon = \frac{\Delta l}{l_0}$$
 Strain gauges are in essence precise electrical resistors which are sensitive to elongation. This sensitivity comes from the stretching of the conductor causing a decrease in its cross sectional area and thus a slight increase in it's resistance.
 
 !!! example
-    A commonly used strain gauge is the FLAB-6-11 from TML ![[FLAB-6-11.svg|300]]
+    A commonly used strain gauge is the FLAB-6-11 from TML ![](../media/FLAB-6-11.svg){  width="300", align=right }
 
-    There are also stacked strain gauges available that are sensitive in three directions. These are called rosettes and a common type is the FRAB-6-11 from TML:
-    ![[FRAB-6-11.svg|300]]
+    There are also stacked strain gauges available that are sensitive in three directions. These are called rosettes and a common type is the FRAB-6-11 from TML: ![](../media/FRAB-6-11.svg){ width="300", align=right }
 
 
 This relationship is as follows, where $K$ is constant given by the manufacturer of the strain gauge:
