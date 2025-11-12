@@ -1,3 +1,8 @@
+---
+title: Standard connector pinouts
+description: Commonly use pinouts for equipment used in the lab.
+---
+
 # DIN Connector
 A DIN connector is an electrical connector standardized by the _[Deutsches Institut für Normung](https://en.wikipedia.org/wiki/Deutsches_Institut_f%C3%BCr_Normung "Deutsches Institut für Normung")_ (DIN), the German Institute for Standards, in the mid 1950's. It was originally made for audio equipment but it can be used for all kinds of things.
 
@@ -5,7 +10,7 @@ In our lab we often use DIN connectors because they are easily available from ou
 
 See the image below for the most common contact arrangements for DIN connectors.
 
-![[DIN_connector_pinout.svg]]
+![](../media/DIN_connector_pinout.svg)
 
 ## BICM connector
 ## Laser displacement sensor connectors
@@ -39,7 +44,10 @@ DIN Connector side
 | 6      | Brown + Grey   | Brown + Grey   | GND (power supply) + GND (signal) |
 
 
-![[Pasted image 20240620120410.png]]
+![Assembly instructions Binder 712 connector](../media/Pasted image 20240620120410.png)
+/// caption
+Assembly instructions for a Binder 712 (99 0426 10 08) connector used to connect to FDRF laser triangulation distance sensors.
+///
 
 # M12 connectors
 A coded M12 connectors 4 pin
@@ -53,7 +61,7 @@ A coded M12 connectors 4 pin
 
 # Servovalve connector
 Inside the [[servovalve]] there are two coils. The first coil is connected on pins **A** (+) and **B** (-), the second on **C** (+) and **D** (-). 
-![[Moog-Servo-Valves-wiring.svg|650]]
+![Moog servovalve connection diagram](../media/Moog-Servo-Valves-wiring.svg) 
 
 A 4-pin electrical connector that mates with an MS3106F14S-2S is standard. All 4 torque motor leads are available at the connector so that external connections can be made for series, parallel, or differential operation. ([Source](https://www.moog.com/content/dam/moog/literature/ICD/Moog-Servo-Valves-G77x-Catalog-en.pdf) p. 8)
 

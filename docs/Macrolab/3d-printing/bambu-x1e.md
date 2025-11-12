@@ -1,3 +1,7 @@
+---
+title: Bambu Lab X1E
+---
+
 ## Preferred filament types
 There are many options available for printing filaments. However to keep printer maintenance to a minimum, and to ensure consistent results we like to stick to the following types of filament used in our printers:
 - Bambu Lab PETG Basic
@@ -20,4 +24,4 @@ Buying filament without the spool holder is preferred to minimize waste. Bambu L
 3. Install Bambu Studio on your PC.
 4. Add a firewall rule on your PC to allow incoming UDP packets on port 2021.
 
-![[bambu_autodiscovery_firewall_settings.png]]
+![](../../media/bambu_autodiscovery_firewall_settings.png)
