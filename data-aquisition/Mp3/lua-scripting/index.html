@@ -6,30 +6,32 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Welcome to the Macrolab knowledge base.">
+        <meta name="description" content="Scripting functionality to integrate complex extentions into Mp3">
       
       
       
-        <link rel="canonical" href="https://kb.macrolab.nl/">
+        <link rel="canonical" href="https://kb.macrolab.nl/data-aquisition/Mp3/lua-scripting/">
       
       
+        <link rel="prev" href="../csv-files/">
       
-        <link rel="next" href="control-systems/">
+      
+        <link rel="next" href="../../Mp4/Features/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Home page - Macrolab Knowledge Base</title>
+        <title>Lua scripting - Macrolab Knowledge Base</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
       
 
@@ -42,11 +44,11 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="stylesheets/Temml-Asana.css">
+      <link rel="stylesheet" href="../../../stylesheets/Temml-Asana.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about" class="md-skip">
+        <a href="#boilerplate" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Macrolab Knowledge Base" class="md-header__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
+    <a href="../../.." title="Macrolab Knowledge Base" class="md-header__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home page
+              Lua scripting
             
           </span>
         </div>
@@ -181,11 +183,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -206,7 +206,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="control-systems/" class="md-tabs__link">
+        <a href="../../../control-systems/" class="md-tabs__link">
           
   
   
@@ -224,11 +224,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="data-aquisition/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -250,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="electronics/Ethernet-IP-for-communication-between-devices/" class="md-tabs__link">
+        <a href="../../../electronics/Ethernet-IP-for-communication-between-devices/" class="md-tabs__link">
           
   
   
@@ -272,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="hydraulics/Axial%20piston%20variable%20pump/" class="md-tabs__link">
+        <a href="../../../hydraulics/Axial%20piston%20variable%20pump/" class="md-tabs__link">
           
   
   
@@ -294,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="macrolab/" class="md-tabs__link">
+        <a href="../../../macrolab/" class="md-tabs__link">
           
   
   
@@ -316,7 +318,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="sensors-and-transducers/" class="md-tabs__link">
+        <a href="../../../sensors-and-transducers/" class="md-tabs__link">
           
   
   
@@ -352,7 +354,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Macrolab Knowledge Base" class="md-nav__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
+    <a href="../../.." title="Macrolab Knowledge Base" class="md-nav__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -379,19 +381,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -407,7 +400,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -452,7 +444,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="control-systems/" class="md-nav__link ">
+            <a href="../../../control-systems/" class="md-nav__link ">
               
   
   
@@ -496,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/Load-protect-vs.-load-limit/" class="md-nav__link">
+      <a href="../../../control-systems/Load-protect-vs.-load-limit/" class="md-nav__link">
         
   
   
@@ -524,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/PID/" class="md-nav__link">
+      <a href="../../../control-systems/PID/" class="md-nav__link">
         
   
   
@@ -552,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/Tuning/" class="md-nav__link">
+      <a href="../../../control-systems/Tuning/" class="md-nav__link">
         
   
   
@@ -603,7 +595,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="control-systems/controller-hardware/" class="md-nav__link ">
+            <a href="../../../control-systems/controller-hardware/" class="md-nav__link ">
               
   
   
@@ -647,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/controller-hardware/control-2/" class="md-nav__link">
+      <a href="../../../control-systems/controller-hardware/control-2/" class="md-nav__link">
         
   
   
@@ -737,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/Re1/Re1/" class="md-nav__link">
+      <a href="../../../control-systems/Re1/Re1/" class="md-nav__link">
         
   
   
@@ -829,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/Re2/Development%20notes/" class="md-nav__link">
+      <a href="../../../control-systems/Re2/Development%20notes/" class="md-nav__link">
         
   
   
@@ -857,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="control-systems/Re2/Re2%20-%20Controller%20HMI/" class="md-nav__link">
+      <a href="../../../control-systems/Re2/Re2%20-%20Controller%20HMI/" class="md-nav__link">
         
   
   
@@ -897,6 +889,8 @@
       
   
   
+    
+  
   
   
     
@@ -918,18 +912,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="data-aquisition/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -947,13 +944,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -996,7 +993,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="data-aquisition/Devices/" class="md-nav__link ">
+            <a href="../../Devices/" class="md-nav__link ">
               
   
   
@@ -1040,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/Devices/U1731B/" class="md-nav__link">
+      <a href="../../Devices/U1731B/" class="md-nav__link">
         
   
   
@@ -1073,8 +1070,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1089,11 +1088,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -1114,7 +1113,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1132,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/Mp3/csv-files/" class="md-nav__link">
+      <a href="../csv-files/" class="md-nav__link">
         
   
   
@@ -1157,10 +1156,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="data-aquisition/Mp3/lua-scripting/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua scripting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1176,6 +1200,74 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#boilerplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boilerplate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boilerplate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serial communication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokenizing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tokenizing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1252,7 +1344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/Mp4/Features/" class="md-nav__link">
+      <a href="../../Mp4/Features/" class="md-nav__link">
         
   
   
@@ -1338,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/Mp4/Dev%20notes/DAQ%20Devices/" class="md-nav__link">
+      <a href="../../Mp4/Dev%20notes/DAQ%20Devices/" class="md-nav__link">
         
   
   
@@ -1366,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/Mp4/Dev%20notes/GLFW%20-%20Drag%20and%20drop%20files/" class="md-nav__link">
+      <a href="../../Mp4/Dev%20notes/GLFW%20-%20Drag%20and%20drop%20files/" class="md-nav__link">
         
   
   
@@ -1394,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/Mp4/Dev%20notes/Multi-viewport/" class="md-nav__link">
+      <a href="../../Mp4/Dev%20notes/Multi-viewport/" class="md-nav__link">
         
   
   
@@ -1492,7 +1584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-aquisition/NI%20DAQMX/Synchronization%20between%20multiple%20USB%20DAQMX%20devices/" class="md-nav__link">
+      <a href="../../NI%20DAQMX/Synchronization%20between%20multiple%20USB%20DAQMX%20devices/" class="md-nav__link">
         
   
   
@@ -1593,7 +1685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="electronics/Ethernet-IP-for-communication-between-devices/" class="md-nav__link">
+      <a href="../../../electronics/Ethernet-IP-for-communication-between-devices/" class="md-nav__link">
         
   
   
@@ -1621,7 +1713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="electronics/Power%20supply%20considerations/" class="md-nav__link">
+      <a href="../../../electronics/Power%20supply%20considerations/" class="md-nav__link">
         
   
   
@@ -1705,7 +1797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="electronics/product-design-guidelines/D%20sub%20connectors/" class="md-nav__link">
+      <a href="../../../electronics/product-design-guidelines/D%20sub%20connectors/" class="md-nav__link">
         
   
   
@@ -1733,7 +1825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="electronics/product-design-guidelines/Design%20examples/" class="md-nav__link">
+      <a href="../../../electronics/product-design-guidelines/Design%20examples/" class="md-nav__link">
         
   
   
@@ -1836,7 +1928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hydraulics/Axial%20piston%20variable%20pump/" class="md-nav__link">
+      <a href="../../../hydraulics/Axial%20piston%20variable%20pump/" class="md-nav__link">
         
   
   
@@ -1864,7 +1956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hydraulics/Hydraulic%20Manifold/" class="md-nav__link">
+      <a href="../../../hydraulics/Hydraulic%20Manifold/" class="md-nav__link">
         
   
   
@@ -1892,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hydraulics/Hydraulics/" class="md-nav__link">
+      <a href="../../../hydraulics/Hydraulics/" class="md-nav__link">
         
   
   
@@ -1920,7 +2012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hydraulics/Servovalve/" class="md-nav__link">
+      <a href="../../../hydraulics/Servovalve/" class="md-nav__link">
         
   
   
@@ -1988,7 +2080,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="macrolab/" class="md-nav__link ">
+            <a href="../../../macrolab/" class="md-nav__link ">
               
   
   
@@ -2032,7 +2124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/general-conventions/" class="md-nav__link">
+      <a href="../../../macrolab/general-conventions/" class="md-nav__link">
         
   
   
@@ -2060,7 +2152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/Kees%20van%20Beek/" class="md-nav__link">
+      <a href="../../../macrolab/Kees%20van%20Beek/" class="md-nav__link">
         
   
   
@@ -2088,7 +2180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/standard-pinouts/" class="md-nav__link">
+      <a href="../../../macrolab/standard-pinouts/" class="md-nav__link">
         
   
   
@@ -2170,7 +2262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/3d-printing/bambu-x1e/" class="md-nav__link">
+      <a href="../../../macrolab/3d-printing/bambu-x1e/" class="md-nav__link">
         
   
   
@@ -2260,7 +2352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/dic/Sony%20Mirrorless%20Cameras/" class="md-nav__link">
+      <a href="../../../macrolab/dic/Sony%20Mirrorless%20Cameras/" class="md-nav__link">
         
   
   
@@ -2327,7 +2419,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="macrolab/eu-standards-and-regulations/" class="md-nav__link ">
+            <a href="../../../macrolab/eu-standards-and-regulations/" class="md-nav__link ">
               
   
   
@@ -2371,7 +2463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/eu-standards-and-regulations/ce-compliance/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/ce-compliance/" class="md-nav__link">
         
   
   
@@ -2399,7 +2491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/eu-standards-and-regulations/Electrical%20safety/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Electrical%20safety/" class="md-nav__link">
         
   
   
@@ -2427,7 +2519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/eu-standards-and-regulations/Hydraulic%20fluid%20power/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Hydraulic%20fluid%20power/" class="md-nav__link">
         
   
   
@@ -2455,7 +2547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/eu-standards-and-regulations/Safety%20of%20machinery/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Safety%20of%20machinery/" class="md-nav__link">
         
   
   
@@ -2483,7 +2575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macrolab/eu-standards-and-regulations/Technical%20documentation/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Technical%20documentation/" class="md-nav__link">
         
   
   
@@ -2557,7 +2649,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="sensors-and-transducers/" class="md-nav__link ">
+            <a href="../../../sensors-and-transducers/" class="md-nav__link ">
               
   
   
@@ -2601,7 +2693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="sensors-and-transducers/Accelerometers/" class="md-nav__link">
+      <a href="../../../sensors-and-transducers/Accelerometers/" class="md-nav__link">
         
   
   
@@ -2629,7 +2721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="sensors-and-transducers/Displacement%20transducers/" class="md-nav__link">
+      <a href="../../../sensors-and-transducers/Displacement%20transducers/" class="md-nav__link">
         
   
   
@@ -2657,7 +2749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="sensors-and-transducers/Force%20transducers/" class="md-nav__link">
+      <a href="../../../sensors-and-transducers/Force%20transducers/" class="md-nav__link">
         
   
   
@@ -2685,7 +2777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="sensors-and-transducers/Geophones/" class="md-nav__link">
+      <a href="../../../sensors-and-transducers/Geophones/" class="md-nav__link">
         
   
   
@@ -2713,7 +2805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="sensors-and-transducers/Strain%20gauges/" class="md-nav__link">
+      <a href="../../../sensors-and-transducers/Strain%20gauges/" class="md-nav__link">
         
   
   
@@ -2758,8 +2850,64 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#boilerplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boilerplate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boilerplate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serial communication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokenizing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tokenizing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2779,9 +2927,80 @@
   
 
 
-<p>Welcome to the Macrolab knowledge base. Here you'll find a collection of information pieces, explainers, examples and more regarding technology used in our lab. The focus of this knowledge base is on <a href="data-aquisition/">data-aquisition</a> and <a href="control-systems/">control systems</a>, however you will also find information on other related subjects.</p>
-<h1 id="about">About</h1>
-<p>This knowledge base is written by technicians working in the lab. The main purpose of this knowledge base is to provide information and references to the way things are done here. Hopefully this information is helpful when designing new testing setups or troubleshooting existing ones.</p>
+  <h1>Lua scripting</h1>
+
+<h2 id="boilerplate">Boilerplate</h2>
+<p>Create a new file in the <code>C:\Mp3Prog\Control</code> folder and give it a sensible name and the <code>.lua</code> extension. Then copy and paste the boilerplate code from below.
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">debug.getinfo</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nv">short_src</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kr">while</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="kr">do</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.sub</span><span class="p">(</span><span class="nv">this</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.find</span><span class="p">(</span><span class="nv">this</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kr">end</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">print</span><span class="p">(</span><span class="nv">this</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; started&quot;</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">-- Your setup code goes here</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kr">while</span><span class="w"> </span><span class="nf">AllowRunning</span><span class="p">(</span><span class="nv">this</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kr">do</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="c1">-- Your main loop code goes here</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nf">yield</span><span class="p">()</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="kr">end</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nb">print</span><span class="p">(</span><span class="nv">this</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; end&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+This code gets it's own source filename from Lua's <a href="https://www.lua.org/pil/23.1.html">debug library</a>, and prints this to Mp3's <a href="">script output</a>.</p>
+<h3 id="main-loop">Main loop</h3>
+<p>Lua code is executed on the TimeBase-timer in Mp3, normally set at 100 ms. The <code>AllowRunning(this)</code> function returns <code>true</code> when Mp3 starts processing the lua script. At the end of your main loop in the script the <code>yield()</code> function then returns to the regular Mp3 code execution.</p>
+<h2 id="serial-communication">Serial communication</h2>
+<p>Often you want to manage a serial device with the script. Pretty much everything is possible to build that way and we've seen some crazy things being done.</p>
+<p>If a serial device requires more complex interaction, it can be opened from the script like done below. Add this code to your setup.
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="c1">-- COM port number on Windows</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ComIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">-- local reference to the com-port object (0-5 are available)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">ComClose</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Close the port in case it was left open by an aborted script</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">ComOpen</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">port</span><span class="p">,</span><span class="w"> </span><span class="mi">115200</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Open the port and connect it to its reference</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nf">ComDelimiter</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Set CR as the end of line character</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nf">ComFlush</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Clear any stale data still left in the buffer</span>
+</span></code></pre></div>
+Lua will read the serial data as a string up to the <code>ComDelimiter()</code>value when running the <code>ComGets()</code> command.
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">EStr</span><span class="p">,</span><span class="w"> </span><span class="nv">ECnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ComGets</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kr">if</span><span class="w"> </span><span class="nv">ECnt</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kr">then</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ECnt= &quot;</span><span class="p">,</span><span class="nv">ECnt</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EStr= &quot;</span><span class="p">,</span><span class="nv">EStr</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kr">end</span>
+</span></code></pre></div>
+Here <code>EStr</code> is the string and <code>ECnt</code> the number of bytes (characters) received.</p>
+<p>Sending data to the serial device is simply done with <code>ComPuts()</code>.
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">ComPuts</span><span class="p">(</span><span class="nv">ComIndex</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+Here the characters <code>GET\r\n</code> are sent to the serial device. Note the CR+LF chars (<code>\r\n</code>) that are also transmitted at the end of the string.</p>
+<h2 id="tokenizing">Tokenizing</h2>
+<p>Sometimes a bunch of data has to be received at once. This data can be formatted sequentially with a separator character in between the data points. Getting this data from the string can be done with the <code>Tokenize()</code> command.</p>
+<p>In the setup add:
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Firstchannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+And at the top of the main loop:
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">Tok</span><span class="p">,</span><span class="w"> </span><span class="nv">Start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Tokenize</span><span class="p">(</span><span class="nv">EStr</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">Start</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kr">while</span><span class="w"> </span><span class="p">(</span><span class="nv">Start</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">--print(&quot;Tok= &quot;,Tok)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1">--print(&quot;Start= &quot;,Start)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nv">dataval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">tonumber</span><span class="p">(</span><span class="nv">Tok</span><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nv">Index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nf">ChanPutVal</span><span class="p">(</span><span class="nv">Firstchannel</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">Index</span><span class="p">,</span><span class="w"> </span><span class="nv">dataval</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="nv">Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="kr">end</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nv">Tok</span><span class="p">,</span><span class="w"> </span><span class="nv">Start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Tokenize</span><span class="p">(</span><span class="nv">EStr</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">Start</span><span class="p">)</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kr">end</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nv">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</span></code></pre></div>
+This code reads numbers separated by semicolons and puts them into Mp3 [[channels]] sequentially. A single data frame might look like this.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>49.19;11.467;1.337\r
+</span></code></pre></div>
+These three numbers are automatically parsed to floats by the <code>tonumber()</code> command. With the <code>ChanPutVal()</code> function these values will be written to channels in Mp3.</p>
 
 
 
@@ -2804,7 +3023,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2025 16:48:22 UTC">October 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2025 15:18:03 UTC">October 28, 2025</span>
   </span>
 
     
@@ -2879,14 +3098,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.indexes", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.indexes", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
-        <script src="javascripts/temml.js"></script>
+        <script src="../../../javascripts/temml.js"></script>
       
-        <script src="assets/external/unpkg.com/temml@0/dist/temml.min.js"></script>
+        <script src="../../../assets/external/unpkg.com/temml@0/dist/temml.min.js"></script>
       
     
   </body>
