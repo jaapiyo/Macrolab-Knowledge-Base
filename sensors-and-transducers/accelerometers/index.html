@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kb.macrolab.nl/sensors-and-transducers/Geophones/">
+        <link rel="canonical" href="https://kb.macrolab.nl/sensors-and-transducers/accelerometers/">
       
       
-        <link rel="prev" href="../force-transducers/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../strain-gauges/">
+        <link rel="next" href="../displacement-transducers/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Geophones - Macrolab Knowledge Base</title>
+        <title>Accelerometers - Macrolab Knowledge Base</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#vibration-resistant-mounting" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Geophones
+              Accelerometers
             
           </span>
         </div>
@@ -2620,10 +2625,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Accelerometers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accelerometers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2639,6 +2669,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vibration-resistant-mounting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vibration resistant mounting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2704,17 +2763,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../geophones/" class="md-nav__link">
         
   
   
@@ -2730,7 +2782,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2789,6 +2840,25 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vibration-resistant-mounting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vibration resistant mounting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2807,10 +2877,78 @@
   
 
 
-  <h1>Geophones</h1>
+  <h1>Accelerometers</h1>
 
-<p>Geophones measure velocity in m/s.</p>
-<p>Geophones are sensitive to misalignment. Tilt can cause the frequency response to become out of spec.</p>
+<p>Accelerometers convert acceleration (rate of change of velocity) into a measurable quantity like a voltage or a digital value. Accelerometers always measure acceleration relative to freefall, this is also called <a href="https://en.wikipedia.org/wiki/Proper_acceleration">proper acceleration</a>. On earth an accelerometer at rest will indicate approximately 1 <em>g</em> upwards. 
+$<span class="arithmatex">\(1\;\text{g}=9,81\;\text{m/s}^2\)</span>$</p>
+<p>There two common types of accelerometers we use in the lab:
+- MEMS
+- Piezoelectric</p>
+<p>MEMS accelerometers are usually very cheap (about 50 euro/piece) and can be used disposably. Commonly used models can be found in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Range</th>
+<th>Output</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADXL335</td>
+<td>± 3 <em>g</em></td>
+<td>Tri-axial, analog</td>
+<td></td>
+</tr>
+<tr>
+<td>ADXL326</td>
+<td>± 16 <em>g</em></td>
+<td>Tri-axial, analog</td>
+<td></td>
+</tr>
+<tr>
+<td>ADXL354B</td>
+<td>± 2 <em>g</em>, ± 4 <em>g</em></td>
+<td>Tri-axial, analog</td>
+<td>Range selectable with pin</td>
+</tr>
+<tr>
+<td>~~ADXL377~~</td>
+<td>± 200 <em>g</em></td>
+<td>Tri-axial, analog</td>
+<td><strong>EOL, no longer produced</strong>^[No longer produced https://www.analog.com/en/products/adxl377.html]</td>
+</tr>
+</tbody>
+</table>
+<p>From these types we usually buy development boards made by Adafruit because they contain a voltage regulator and output filtering capacitors. This makes it easy to use the accelerometers however care should be taken when using long cables (<span class="arithmatex">\(l&gt;10\;\text{m}\)</span>). The high output impedance (32 kΩ) means the accelerometer output signal will be degraded.</p>
+<p>Piezoelectric accelerometers resist shock loading much better than MEMS types. They are also better suited for high frequency measurements. However their sensitivity doesn't reach all the way to 0 Hz. Below are a few types we have experience with:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Range</th>
+<th>Output</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>830M1-0200</td>
+<td>± 200 g</td>
+<td>Tri-axial, analog</td>
+<td>Intenal amplifier, output is ± 1,25 V full scale</td>
+</tr>
+<tr>
+<td>3038-2000</td>
+<td>± 2000 g</td>
+<td>Uni-axial, bridge</td>
+<td>Needs an instrumentation amplifier <br>and offset adjust circuitry</td>
+</tr>
+</tbody>
+</table>
+<p>Piezoelectric accelerometers are more expensive but often come with a calibration report and can be considered more reliable.</p>
+<h2 id="vibration-resistant-mounting">Vibration resistant mounting</h2>
 
 
 
