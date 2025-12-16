@@ -29,6 +29,16 @@ The connector on the controller side is a *25-pin male D sub* with the following
 | 22  | R3NO            |
 | 23  | GND             |
 
+## Loop 1-4
+Digital inputs, active (high) when +24 V is applied.
+
+Function of each input:
+
+- Loop 1: Safe stop
+- Loop 2: Pressure switch
+- Loop 3: unused
+- Loop 4: E-Stop
+
 # F, S, $\upepsilon$ connector
 The connector on the controller side is a *25-pin female D sub* with the following pinout (all other pins are not connected).
 

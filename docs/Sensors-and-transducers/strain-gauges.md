@@ -1,10 +1,9 @@
 ## Theory
-Strain is a physical property describing the geometrical deformation caused by applying an external stress to a body. Strain is unitless but strain values are denoted with the Greek letter epsilon $\upepsilon$  or more commonly with $\upmu\upepsilon$^[Sometimes you'll see a strain value denoted with $\text{Str}
-$ or $\micro\text{Str}$], when talking about microstrain. For example:  $2000\;\upmu\upepsilon$.
+Strain is a physical property describing the geometrical deformation caused by applying an external stress to a body. Strain is unitless but strain values are denoted with the Greek letter epsilon $\upepsilon$  or more commonly with $\upmu\upepsilon$, when talking about microstrain. For example:  $2000\;\upmu\upepsilon$. Sometimes you'll see a strain value denoted with $\text{Str}$ or $\upmu\text{Str}$.
 
 $$\epsilon = \frac{\Delta l}{l_0}$$
 
-Strain gauges are in essence precise electrical resistors which are sensitive to elongation. This sensitivity comes from the stretching of the conductor causing a decrease in its cross sectional area and thus a slight increase in it's resistance.
+Strain gauges are precise electrical resistors which are sensitive to elongation. This sensitivity comes from the stretching of the conductor causing a decrease in its cross sectional area and thus a slight increase in it's resistance.
 
 !!! example
     A commonly used strain gauge is the FLAB-6-11 from TML ![](../media/FLAB-6-11.svg){  width="300", align=right }
@@ -17,39 +16,6 @@ This relationship is as follows, where $K$ is constant given by the manufacturer
 $$
 \epsilon \cdot K = \frac{\Delta R}{R} \quad\Rightarrow\quad \epsilon=\frac{\Delta R}{R\cdot K}
 $$
-
-## Measuring force
-Force acting on an object generates stress within the object. This amount of stress is determined by the surface area the force is acting upon.
-
-$$
-\sigma =\frac{F}{A}
-$$
-
-The relationship between stress and strain is based on a material property called the modulus of elasticity (Young's modulus). This relationship is only valid in the linear elastic region of a material.
-
-$$
-\epsilon=\sigma\cdot E
-$$
-
-The modulus of elasticity of steel is about 200 GPa, aluminum 69 GPa and concrete 30 GPa.
-
-!!! example
-    Strain in a steel cilinder as a result of an applied tension force $F=100\;\text{kN}$. With a diameter of $d=20\;\text{mm}$.
-
-    $$
-    \begin{align}
-    A &= \pi\cdot d^2\\
-    &= \pi\cdot 400\\
-    \end{align}
-    $$
-
-    $$
-    \begin{align}
-    \epsilon &= \frac{F}{A\cdot E}\\
-    &= \frac{100\cdot10^3}{\pi\cdot400\cdot200\cdot10^3}\\
-    &\approx 378 \;\upmu\upepsilon
-    \end{align}
-    $$
 
 ### Gauge factor
 The gauge factor $K$ gives the relationship between the change of electrical resistance and the strain acting on the strain gauge. It is defined as follows:
@@ -78,11 +44,26 @@ Some gauge factors for common strain gauge materials can be seen in the table be
 ### Converting mV/V to strain
 The mV/V value is the output voltage when a maximum load is applied to a transducer. It shows the output voltage generated when 1V excitation is applied.
 
-For a lot of load cells the sensitivity is specified in $\text{mV}/\text{V}$. In order to obtain the conversion factor 
+Often the sensitivity is specified in $\text{mV}/\text{V}$. The table below shows values assuming $K=2.0$.
+
+| Rated output (mV/V) | Estimated effective strain (µε) |
+| ------------------: | ------------------------------: |
+|                 1.0 |                            ~500 |
+|                 1.5 |                            ~750 |
+|                 2.0 |                           ~1000 |
+|                 2.5 |                           ~1250 |
+|                 3.0 |                           ~1500 |
+
+
+The relationship between mV/V and microstrain depends on the gauge factor ($K$).
 
 $$
-\epsilon = \frac{4}{K}\cdot\frac{U_o}{U_s}\cdot G
+\epsilon_\mu = \frac{\text{mV/V}\cdot1000}{K}
 $$
+
+!!! note
+    Load-cell manufacturers don’t publish GF because the finished load cell’s output is determined by mechanical design and trimming, not by the strain-gauge k-factor, making GF non-unique, non-measurable, and non-useful at the product level.
+
 
 !!! example
     A load cell has a sensitivity $S = 2.0\;\text{mV}/\text{V}$ and a rated capacity $M_{max} = 1000\;\text{kg}$. 
