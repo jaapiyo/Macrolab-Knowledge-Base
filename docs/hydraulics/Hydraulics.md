@@ -1,1 +1,0 @@
-In the lab the main power source for generating force is provided by hydraulics. Throughout the lab multiple pumps and hydraulic ring mains provide hundreds of kilowatts of power to our testing machines.

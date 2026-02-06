@@ -1,10 +1,10 @@
 nav:
-  - 'Macrolab': macrolab:
-      - 'General conventions': general-conventions
-      - 'Standard pinouts': standard-pinouts
-      - '3D Printing': 3d-printing
-      - 'DIC': dic
-      - 'EU Standards and Regulations': eu-standards-and-regulations
+  - 'Macrolab': macrolab
+    - 'General conventions': general-conventions
+    - 'Standard pinouts': standard-pinouts
+    - '3D Printing': 3d-printing
+    - 'DIC': dic
+    - 'EU Standards and Regulations': eu-standards-and-regulations
   - 'Data aquisition': data-aquisition
   - 'Control systems': control-systems
   - 'Sensors and transducers': sensors-and-transducers
