@@ -48,4 +48,41 @@ $$
 \sigma=\frac{200*10^{-6}\cdot 210\cdot 10^9}{2.6} \enspace\approx 158 \mathrm{MPa}
 $$
 
+## Wiring
+The image below shows an optimized method of connecting the strain gauges preventing crossing of wires. 
+
 ![](../media/load-cell-strain-gauges.svg)
+
+The schematic representation of the circuit can be seen in the image below.
+
+![](../media/loadcell_bridge.svg){ width="300" }
+/// caption
+Image caption
+///
+
+## Understanding the factor 2.6
+The increase in sensitivity might not be obvious right away. So let's look at a simplification.
+
+![](../media/wheatstone_bridge.svg){ width="300" }
+/// caption
+Simplified wheatstone bridge circuit
+///
+
+Let's say R1 and R4 are both active strain elements placed in the force direction of the load cell. An increase in force will induce an increase in resistance in these strain gauges. 
+
+Assuming a change of 1000 $\upmu\upepsilon$ (which is 0.1%), R1 and R4 both increase resistance proportionally. Let's assume a K-factor of 1 for now, so the resistance also inceases 0.1 %. R1 is based in the positive side of the bridge, and R4 in the negative side. 
+
+$$
+\begin{aligned}
+V_{out}&=V_E-V_F \\
+&=0.1-(-0.1) \\
+&=0.2
+\end{aligned}
+$$
+
+Here you see a factor 2 output, because the change in strain affects the output equally on the positive as the negative side of the bridge.
+
+As mentioned above, the factor 0.6 comes from the transverse strain gauges which are sensitive to the Poisson's ratio of deformation in the direction perpendicular to the force on the load cell.
+
+### Adding more strain gauges to get higer sensitivity
+Adding more strain gauges in series will not increase the bridge sensitivity. As these gauges will just act the same as one larger strain gauge. This will increase only the averaging effect and might decrease sensitivity to local defects in the material.
