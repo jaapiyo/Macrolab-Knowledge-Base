@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hydraulic Bode Plot</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --blue: #378add;
+      --orange: #d85a30;
+      --green: #3b6d11;
+      --red: rgba(226, 75, 74, 0.7);
+      --text: #1f1f1f;
+      --muted: #6f6c64;
+      --border: rgba(136, 135, 128, 0.25);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .bodeplot {
+      width: 100%;
+      max-width: 1100px;
+      padding: 0;
+    }
+
+    .bodeplot__header {
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .summary {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 76ch;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 18px;
+      margin: 12px 0 8px;
+      font-size: 12px;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch-line {
+      width: 16px;
+      height: 0;
+      display: inline-block;
+      border-top: 2px solid currentColor;
+    }
+
+    .swatch-dashed {
+      border-top-style: dashed;
+    }
+
+    .bodeplot__charts {
+      display: grid;
+      gap: 0px;
+    }
+
+    .chart-frame {
+      position: relative;
+      width: 100%;
+    }
+
+    .mag-frame { height: 260px; }
+    .phase-frame { height: 260px; }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 720px) {
+      .mag-frame { height: 230px; }
+      .phase-frame { height: 230px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="bodeplot" aria-label="Hydraulic bode plot example">
+    <section class="bodeplot__header">
+      <!-- <h1>Hydraulic Bode Plot</h1>
+      <p class="summary">A standalone Chart.js example showing the magnitude and phase response of a simplified hydraulic servovalve actuator open-loop plant. The plot spans 0.1 to 1000 Hz, marks the hydraulic and valve resonances, and highlights the -180° phase boundary.</p> -->
+
+      <div class="legend" aria-hidden="true">
+        <span><i class="swatch-line" style="color: var(--blue)"></i> Plant G(s)</span>
+        <span><i class="swatch-line swatch-dashed" style="color: var(--orange)"></i> ωh = 50 Hz</span>
+        <span><i class="swatch-line swatch-dashed" style="color: var(--green)"></i> ωv = 150 Hz</span>
+        <span><i class="swatch-line swatch-dashed" style="color: var(--red)"></i> −180° boundary</span>
+      </div>
+
+      <p class="summary" style="margin-top: 0;">ωh = 50 Hz · ωv = 150 Hz · ζh = 0.12 (lightly damped) · valve BW = 150 Hz · ζv = 0.70 · position loop</p>
+    </section>
+
+    <section class="bodeplot__charts">
+      <article>
+        <div class="chart-frame mag-frame">
+          <canvas id="magC" role="img" aria-label="Magnitude Bode plot: integrator rolloff, resonant peak at omega h equals 50 hertz, steep rolloff after the hydraulic resonance"></canvas>
+        </div>
+      </article>
+
+      <article>
+        <div class="chart-frame phase-frame">
+          <canvas id="phC" role="img" aria-label="Phase Bode plot: starts near negative 90 degrees, crosses negative 180 degrees near 50 hertz, and continues downward"></canvas>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script>
+    const WH = 2 * Math.PI * 50, ZH = 0.12, WV = 2 * Math.PI * 150, ZV = 0.70, KDB = 40;
+
+    function evalG(f) {
+      const w = 2 * Math.PI * f;
+      const ir = 0, ii = -1 / w;
+      const hdr = WH * WH - w * w, hdi = 2 * ZH * WH * w, hd2 = hdr * hdr + hdi * hdi;
+      const hr = WH * WH * hdr / hd2, hi = -WH * WH * hdi / hd2;
+      const vdr = WV * WV - w * w, vdi = 2 * ZV * WV * w, vd2 = vdr * vdr + vdi * vdi;
+      const vr = WV * WV * vdr / vd2, vi = -WV * WV * vdi / vd2;
+      const g1r = ir * hr - ii * hi, g1i = ir * hi + ii * hr;
+      const gr = g1r * vr - g1i * vi, gi = g1r * vi + g1i * vr;
+      return { mag: 20 * Math.log10(Math.hypot(gr, gi)) + KDB, rp: Math.atan2(gi, gr) * 180 / Math.PI };
+    }
+
+    const fs = Array.from({ length: 400 }, (_, i) => Math.pow(10, -1 + 4 * i / 399));
+    const mp = [], pp = [];
+    let pr = null, uw = 0;
+    fs.forEach(f => {
+      const { mag, rp } = evalG(f);
+      mp.push({ x: f, y: +mag.toFixed(2) });
+      if (pr === null) {
+        uw = rp;
+      } else {
+        let d = rp - pr;
+        if (d > 180) d -= 360;
+        if (d < -180) d += 360;
+        uw += d;
+      }
+      pr = rp;
+      pp.push({ x: f, y: +uw.toFixed(2) });
+    });
+
+    const BL = '#378ADD', CO = '#D85A30', GN = '#3B6D11';
+    const Y_AXIS_WIDTH = 66;
+
+    function vlinesP(vls, pid) {
+      return {
+        id: pid,
+        afterDraw(chart) {
+          const ctx = chart.ctx, x = chart.scales.x, y = chart.scales.y;
+          vls.forEach(({ f, c, l }) => {
+            const px = x.getPixelForValue(f);
+            ctx.save();
+            ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = c;
+            ctx.lineWidth = 1.5;
+            ctx.globalAlpha = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(px, y.top);
+            ctx.lineTo(px, y.bottom);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = c;
+            ctx.font = '500 11px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(l, px, y.top + 13);
+            ctx.restore();
+          });
+        }
+      };
+    }
+
+    const slopeP = {
+      id: 'slopes',
+      afterDraw(chart) {
+        const ctx = chart.ctx, x = chart.scales.x, y = chart.scales.y;
+        [[3, 9, -12, '−20 dB/dec'], [90, 280, -12, '−60 dB/dec']].forEach(([f1, f2, off, lbl]) => {
+          const { mag: m1 } = evalG(f1), { mag: m2 } = evalG(f2);
+          const px1 = x.getPixelForValue(f1), py1 = y.getPixelForValue(m1);
+          const px2 = x.getPixelForValue(f2), py2 = y.getPixelForValue(m2);
+          const ang = Math.atan2(py2 - py1, px2 - px1);
+          ctx.save();
+          ctx.fillStyle = 'rgba(56, 138, 221, 0.75)';
+          ctx.font = 'italic 11px Arial, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.translate((px1 + px2) / 2, (py1 + py2) / 2 + off);
+          ctx.rotate(ang);
+          ctx.fillText(lbl, 0, 0);
+          ctx.restore();
+        });
+        const { mag: pm } = evalG(50);
+        const ppx = x.getPixelForValue(50), ppy = y.getPixelForValue(pm);
+        ctx.save();
+        ctx.fillStyle = CO;
+        ctx.font = '500 11px Arial, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('resonant peak', ppx + 7, ppy - 6);
+        ctx.restore();
+      }
+    };
+
+    const h180P = {
+      id: 'h180',
+      afterDraw(chart) {
+        const ctx = chart.ctx, x = chart.scales.x, y = chart.scales.y;
+        const py = y.getPixelForValue(-180);
+        ctx.save();
+        ctx.setLineDash([8, 4]);
+        ctx.strokeStyle = 'rgba(226,75,74,0.6)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(x.left, py);
+        ctx.lineTo(x.right, py);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(226,75,74,0.85)';
+        ctx.font = '500 11px Arial, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('−180°', x.right - 4, py - 4);
+        ctx.restore();
+      }
+    };
+
+    const xCfg = (showLabels, reserveSpace = true, labelColor = '#888780') => ({
+      type: 'logarithmic',
+      min: 0.1,
+      max: 1000,
+      grid: { color: 'rgba(136,135,128,0.15)' },
+      border: { color: 'rgba(136,135,128,0.25)' },
+      ticks: {
+        display: reserveSpace,
+        align: 'inner',
+        color: showLabels ? labelColor : 'rgba(0,0,0,0)',
+        font: { size: 11 },
+        callback(v) {
+          const nice = [0.1, 1, 10, 100, 1000];
+          return nice.some(n => Math.abs(v - n) / n < 0.01) ? v + ' Hz' : '';
+        }
+      },
+      title: { display: reserveSpace, text: 'Frequency (Hz)', color: showLabels ? labelColor : 'rgba(0,0,0,0)', font: { size: 12 } }
+    });
+
+    new Chart(document.getElementById('magC'), {
+      type: 'line',
+      plugins: [vlinesP([{ f: 50, c: CO, l: 'ωh' }, { f: 150, c: GN, l: 'ωv' }], 'vlm'), slopeP],
+      data: { datasets: [{ data: mp, borderColor: BL, borderWidth: 2, pointRadius: 0, tension: 0 }] },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        parsing: false,
+        layout: {
+          padding: { right: 12.56 }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => `${c.parsed.y.toFixed(1)} dB` } }
+        },
+        scales: {
+          x: xCfg(false, false),
+          y: {
+            afterFit(scale) {
+              scale.width = Y_AXIS_WIDTH;
+            },
+            min: -120,
+            max: 60,
+            grid: { color: 'rgba(136,135,128,0.15)' },
+            border: { color: 'rgba(136,135,128,0.25)' },
+            ticks: { color: '#888780', font: { size: 11 }, padding: 6, stepSize: 20, callback: v => v + ' dB' },
+            title: { display: true, text: 'Magnitude (dB)', color: '#888780', font: { size: 12 } }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('phC'), {
+      type: 'line',
+      plugins: [vlinesP([{ f: 50, c: CO, l: 'ωh' }, { f: 150, c: GN, l: 'ωv' }], 'vlp'), h180P],
+      data: { datasets: [{ data: pp, borderColor: BL, borderWidth: 2, pointRadius: 0, tension: 0 }] },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        parsing: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => `${c.parsed.y.toFixed(1)}°` } }
+        },
+        scales: {
+          x: xCfg(true, true),
+          y: {
+            afterFit(scale) {
+              scale.width = Y_AXIS_WIDTH;
+            },
+            min: -480,
+            max: 0,
+            grid: { color: 'rgba(136,135,128,0.15)' },
+            border: { color: 'rgba(136,135,128,0.25)' },
+            ticks: { color: '#888780', font: { size: 11 }, padding: 6, stepSize: 90, callback: v => v + '°' },
+            title: { display: true, text: 'Phase (deg)', color: '#888780', font: { size: 12 } }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
