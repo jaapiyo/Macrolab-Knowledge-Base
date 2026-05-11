@@ -6,4 +6,6 @@
 !!! danger
     **Machines have no brain, always use your own!**
 
-Re1 is PC software that's used to send configuration parameters to, and read measurement values from our [[Controller hardware]]. Re1 is written by [[Kees van Beek]].
+![](../../media/Re1_screenshot.png)
+
+Re1 is PC software that's used to send configuration parameters to, and read measurement values from our [[Controller hardware]]. Re1 is written by [Kees van Beek](../../kees-van-beek.md).

@@ -1,3 +1,8 @@
+---
+title: Home page
+description: Welcome to the Macrolab knowledge base.
+---
+
 ![](../media/macrolab.jpg)
 
 # Stevin laboratory

@@ -1,4 +1,9 @@
-A control system is used to regulate the behavior of a device or system using control loops. Usually a setpoint is given and the control system will change it's output such that deviation from the setpoint (error) is minimized. [[Tuning]] is used to optimize the speed at which the target is reached.
+---
+title: Control systems
+description:
+---
+
+A control system is used to regulate the behavior of a device or system using control loops. Usually a setpoint is given and the control system will change it's output such that deviation from the setpoint (error) is minimized. [Tuning](tuning) is used to optimize the speed at which the target is reached.
 
 Control systems are sometimes also called *servo controller* or *servo* for short. In our lab we use a lot of [[Controller hardware|servo hydraulic controllers]] for force and displacement control in our testing machines.
 

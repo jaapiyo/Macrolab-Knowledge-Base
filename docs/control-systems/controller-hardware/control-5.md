@@ -25,16 +25,12 @@ The options for using servomotors/stepper motors or other output actuators will 
 | AI 4 | Channel 4 | direct |
 | AI 5 | Channel 5 | direct |
 | AI 6 | Channel 6 | direct |
-| AI 7 | SV actual current | Measured current in SV output loop (+/- 50 mA to +/- 200 mA) |
+| AI 7 | SV actual current | Measured current in SV output loop (+/- 20 mA to +/- 300 mA) |
 | AI 8 | External FG | External setpoint input +/- 10 V |
 | AO 1 | Servovalve / servodrive | - |
 | AO 2 | Analog out 1 | - |
 | AO 3 | Analog out 2 | - |
 | AO 4 | Analog out 3 | - |
-| AO 5 | Excitation voltage channel 1 | - |
-| AO 6 | Excitation offset channel 1 | - |
-| AO 7 | Excitation voltage channel 2 | - |
-| AO 8 | Excitation offset channel 2 | - |
 | INCR ENC | Incremental encoder input | 422 Line Receivers |
 | ABS ENC | BISS-c / SSI encoder input | 422 Line Tranceivers |
 | S/D / CW/CCW | Pulsed output for stepper motors | 422 Line Transmitters |
@@ -53,6 +49,9 @@ Second analog input will no longer have a dedicated LVDT conditioner. The IC's u
 Switchable input gain is desirable. Programmable gain instrumentation amplifiers are available ([AD8253](https://www.analog.com/media/en/technical-documentation/data-sheets/ad8253.pdf)) that make this easy. The amplifier gain is selectable between 1, 10, 100 and 1000. A gain of 1 is helpfull in reducing the need for switches to bypass the amplifier in direct mode. Gain of 10 will not be used that often, but a gain of 100 is intresting for silicon based strain gauge bridges with high k-factors.
 
 In Control 2, both bridge amplifier inputs had their own adjustable excitation power supplies. Using outputs of the DAC, the output voltage and offset could be set.
+
+## Analog outputs
+To send analog signals to external devices analog outputs are used. These outputs must be able to drive long cables (10 m or more). Care must be taken to maintain stability in the output buffer amplifiers inside the controller. With RG-57 cables the capacitance increases about 57 pF per meter. This can quickly become problematic and cause instability in the buffer amplifier. The instability is caused mostly by internal resistance in the output pin of the amplifier. This combined with the capacitive loading causes the phase margin to decrease with increased output capacitance.
 
 # Function generator
 The internal function generator will provide the following waveforms
