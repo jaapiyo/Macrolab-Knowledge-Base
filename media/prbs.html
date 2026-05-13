@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PRBS Controller Demo</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #202020;
+      --muted: #6f6c64;
+      --panel: #f6f6f4;
+      --grid: rgba(136, 135, 128, 0.15);
+      --border: rgba(136, 135, 128, 0.25);
+      --blue: #378add;
+      --orange: #d85a30;
+      --green: #3b6d11;
+      --olive: #639922;
+      --danger: #e24b4a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .prbs {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .control-card {
+      background: var(--panel);
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .control-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .control-value {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .hint-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      gap: 8px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--blue);
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 10px 0 4px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .legend span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .line {
+      width: 16px;
+      height: 2px;
+      display: inline-block;
+      background: currentColor;
+    }
+
+    .dash {
+      width: 16px;
+      height: 0;
+      border-top: 2px dashed currentColor;
+      display: inline-block;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .time-frame { height: 180px; }
+    .spec-frame { height: 250px; }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    #annotation {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="prbs">
+    <h2 class="sr-only">Interactive PRBS signal generator for a 10 kHz hydraulic controller. Shows time-domain waveform and a frequency spectrum.</h2>
+
+    <section class="controls">
+      <article class="control-card">
+        <div class="control-title">Clock rate</div>
+        <input type="range" id="clk" min="0" max="4" step="1" value="2">
+        <div class="hint-row"><span>100 Hz</span><span>500 Hz</span><span>1 kHz</span><span>2 kHz</span><span>5 kHz</span></div>
+        <div class="control-value">Selected: <span id="clkLbl">1 kHz</span></div>
+      </article>
+
+      <article class="control-card">
+        <div class="control-title">Amplitude (% valve full scale)</div>
+        <input type="range" id="amp" min="1" max="15" step="1" value="5">
+        <div class="control-value">+/- <span id="ampLbl">5</span>%</div>
+      </article>
+
+      <article class="control-card">
+        <div class="control-title">Register length n</div>
+        <input type="range" id="nreg" min="5" max="12" step="1" value="8">
+        <div class="control-value">n = <span id="nLbl">8</span> -> <span id="perLbl">255</span> bits</div>
+      </article>
+    </section>
+
+    <div class="subtitle">Time domain - first 25 ms shown</div>
+    <div class="time-frame">
+      <canvas id="tdC" role="img" aria-label="Time domain PRBS signal switching between positive and negative amplitude"></canvas>
+    </div>
+
+    <div class="subtitle">Power spectral density</div>
+    <div class="legend">
+      <span><i class="line" style="color: var(--blue)"></i> PRBS spectrum</span>
+      <span><i class="dash" style="color: var(--orange)"></i> omega_h = 50 Hz</span>
+      <span><i class="dash" style="color: var(--green)"></i> omega_v = 150 Hz</span>
+      <span><i class="dash" style="color: var(--olive)"></i> clock / 2 (rolloff)</span>
+    </div>
+    <div class="spec-frame">
+      <canvas id="spC" role="img" aria-label="PSD of PRBS with broad low-frequency content and rolloff near half the clock frequency"></canvas>
+    </div>
+
+    <div id="annotation"></div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script>
+    const CLK_OPTS = [100, 500, 1000, 2000, 5000];
+    const TAPS = {
+      5: [5, 3],
+      6: [6, 5],
+      7: [7, 6],
+      8: [8, 6, 5, 4],
+      9: [9, 5],
+      10: [10, 7],
+      11: [11, 9],
+      12: [12, 11, 10, 4]
+    };
+    const FS = 10000;
+
+    function makePRBS(n, clkHz, ampPct) {
+      const period = (1 << n) - 1;
+      const sampPerBit = Math.max(1, Math.round(FS / clkHz));
+      const bits = [];
+      let reg = (1 << n) - 1;
+
+      for (let i = 0; i < period; i++) {
+        bits.push((reg & 1) ? ampPct : -ampPct);
+        const tp = TAPS[n];
+        let fb = 0;
+        tp.forEach(t => { fb ^= (reg >> (t - 1)) & 1; });
+        reg = (reg >> 1) | ((fb & 1) << (n - 1));
+      }
+
+      const sig = [];
+      for (let b = 0; b < bits.length; b++) {
+        for (let s = 0; s < sampPerBit; s++) sig.push(bits[b]);
+      }
+      return sig;
+    }
+
+    function fft(re, im) {
+      const n = re.length;
+      if (n === 1) return;
+
+      const reE = [], reO = [], imE = [], imO = [];
+      for (let i = 0; i < n; i += 2) {
+        reE.push(re[i]);
+        imE.push(im[i]);
+        reO.push(re[i + 1]);
+        imO.push(im[i + 1]);
+      }
+
+      fft(reE, imE);
+      fft(reO, imO);
+
+      for (let k = 0; k < n / 2; k++) {
+        const a = -2 * Math.PI * k / n;
+        const wr = Math.cos(a), wi = Math.sin(a);
+        const tr = wr * reO[k] - wi * imO[k];
+        const ti = wr * imO[k] + wi * reO[k];
+        re[k] = reE[k] + tr;
+        im[k] = imE[k] + ti;
+        re[k + n / 2] = reE[k] - tr;
+        im[k + n / 2] = imE[k] - ti;
+      }
+    }
+
+    function nextPow2(n) {
+      let p = 1;
+      while (p < n) p <<= 1;
+      return p;
+    }
+
+    function computePSD(sig) {
+      const N = nextPow2(sig.length);
+      const re = new Array(N).fill(0);
+      const im = new Array(N).fill(0);
+      for (let i = 0; i < sig.length; i++) re[i] = sig[i];
+      fft(re, im);
+
+      const psd = [];
+      const half = N / 2;
+      for (let k = 1; k < half; k++) {
+        const mag2 = (re[k] * re[k] + im[k] * im[k]) / (N * N);
+        psd.push({ f: k * FS / N, p: 10 * Math.log10(mag2 + 1e-20) });
+      }
+      return psd;
+    }
+
+    function vlinePlugin(pid) {
+      return {
+        id: pid,
+        afterDraw(chart) {
+          const lines = chart.options.plugins?.[pid]?.vls || [];
+          const ctx = chart.ctx;
+          const x = chart.scales.x;
+          const y = chart.scales.y;
+
+          lines.forEach(({ f, c, l }) => {
+            const px = x.getPixelForValue(f);
+            if (px < x.left || px > x.right) return;
+            ctx.save();
+            ctx.setLineDash([5, 4]);
+            ctx.strokeStyle = c;
+            ctx.lineWidth = 1.5;
+            ctx.globalAlpha = 0.85;
+            ctx.beginPath();
+            ctx.moveTo(px, y.top);
+            ctx.lineTo(px, y.bottom);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = c;
+            ctx.font = "500 11px Arial, sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText(l, px, y.top + 12);
+            ctx.restore();
+          });
+        }
+      };
+    }
+
+    const stepPlugin = {
+      id: "step",
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const ds = chart.data.datasets[0].data;
+        const x = chart.scales.x;
+        const y = chart.scales.y;
+
+        ctx.save();
+        ctx.strokeStyle = "#378ADD";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        let first = true;
+        for (let i = 0; i < ds.length; i++) {
+          const px = x.getPixelForValue(ds[i].x);
+          const py = y.getPixelForValue(ds[i].y);
+          if (first) {
+            ctx.moveTo(px, py);
+            first = false;
+          } else {
+            const ppx = x.getPixelForValue(ds[i - 1].x);
+            ctx.lineTo(ppx, py);
+            ctx.lineTo(px, py);
+          }
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+    };
+
+    let tdChart = null;
+    let spChart = null;
+
+    function getParams() {
+      return {
+        clkHz: CLK_OPTS[+document.getElementById("clk").value],
+        amp: +document.getElementById("amp").value,
+        n: +document.getElementById("nreg").value
+      };
+    }
+
+    function update() {
+      const { clkHz, amp, n } = getParams();
+      const period = (1 << n) - 1;
+
+      document.getElementById("clkLbl").textContent = clkHz >= 1000 ? (clkHz / 1000) + " kHz" : clkHz + " Hz";
+      document.getElementById("ampLbl").textContent = amp;
+      document.getElementById("nLbl").textContent = n;
+      document.getElementById("perLbl").textContent = period.toLocaleString();
+
+      const sig = makePRBS(n, clkHz, amp);
+
+      const timeWindowMs = 25;
+      const showSamps = Math.min(sig.length, Math.round((timeWindowMs / 1000) * FS));
+      const tdData = [];
+      for (let i = 0; i < showSamps; i++) tdData.push({ x: +(i / FS * 1000).toFixed(4), y: sig[i] });
+
+      const psdInputLen = nextPow2(Math.min(sig.length, 8192));
+      const psd = computePSD(sig.slice(0, psdInputLen));
+      const spData = psd
+        .filter(d => d.f >= 1 && d.f <= FS / 2)
+        .map(d => ({ x: +d.f.toFixed(2), y: +d.p.toFixed(2) }));
+
+      const rolloff = clkHz / 2;
+      const covering = clkHz >= 200;
+      document.getElementById("annotation").innerHTML =
+        "Clock: " + (clkHz >= 1000 ? (clkHz / 1000) + " kHz" : clkHz + " Hz") +
+        " &nbsp;·&nbsp; Flat band: ~1-" + Math.round(rolloff) + " Hz" +
+        " &nbsp;·&nbsp; Rolloff: >" + Math.round(rolloff) + " Hz" +
+        " &nbsp;·&nbsp; Period: " + period + " bits = " + (period / clkHz * 1000).toFixed(1) + " ms" +
+        " &nbsp;·&nbsp; " +
+        (covering
+          ? '<span style="color:#3B6D11">OK: covers omega_h (50 Hz) and omega_v (150 Hz)</span>'
+          : '<span style="color:#E24B4A">Clock too low: misses omega_v at 150 Hz</span>');
+
+      const baseOpts = {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        parsing: false,
+        plugins: { legend: { display: false }, tooltip: { enabled: true } }
+      };
+
+      if (tdChart) {
+        tdChart.data.datasets[0].data = tdData;
+        tdChart.update("none");
+      } else {
+        tdChart = new Chart(document.getElementById("tdC"), {
+          type: "line",
+          plugins: [stepPlugin],
+          data: { datasets: [{ data: tdData, borderColor: "transparent", pointRadius: 0, borderWidth: 0 }] },
+          options: {
+            ...baseOpts,
+            scales: {
+              x: {
+                type: "linear",
+                min: 0,
+                max: 25,
+                grid: { color: "rgba(136,135,128,0.15)" },
+                border: { color: "rgba(136,135,128,0.25)" },
+                ticks: { color: "#888780", font: { size: 11 }, callback: v => v + " ms" },
+                title: { display: true, text: "Time (ms)", color: "#888780", font: { size: 12 } }
+              },
+              y: {
+                min: -20,
+                max: 20,
+                grid: { color: "rgba(136,135,128,0.15)" },
+                border: { color: "rgba(136,135,128,0.25)" },
+                ticks: { color: "#888780", font: { size: 11 }, callback: v => v + "%" },
+                title: { display: true, text: "Valve command (%)", color: "#888780", font: { size: 12 } }
+              }
+            }
+          }
+        });
+      }
+
+      const vlPSD = [
+        { f: 50, c: "#D85A30", l: "omega_h" },
+        { f: 150, c: "#3B6D11", l: "omega_v" },
+        { f: rolloff, c: "#639922", l: "clk/2" }
+      ];
+
+      if (spChart) {
+        spChart.data.datasets[0].data = spData;
+        spChart.options.plugins.vlp.vls = vlPSD;
+        spChart.update("none");
+      } else {
+        const vlp = vlinePlugin("vlp");
+        spChart = new Chart(document.getElementById("spC"), {
+          type: "line",
+          plugins: [vlp],
+          data: { datasets: [{ data: spData, borderColor: "#378ADD", borderWidth: 1.5, pointRadius: 0, tension: 0 }] },
+          options: {
+            ...baseOpts,
+            plugins: { ...baseOpts.plugins, vlp: { vls: vlPSD } },
+            scales: {
+              x: {
+                type: "logarithmic",
+                min: 1,
+                max: 5000,
+                grid: { color: "rgba(136,135,128,0.15)" },
+                border: { color: "rgba(136,135,128,0.25)" },
+                ticks: {
+                  color: "#888780",
+                  font: { size: 11 },
+                  callback(v) {
+                    const n = [1, 10, 100, 1000, 5000];
+                    return n.some(x => Math.abs(v - x) / x < 0.01) ? v + " Hz" : "";
+                  }
+                },
+                title: { display: true, text: "Frequency (Hz)", color: "#888780", font: { size: 12 } }
+              },
+              y: {
+                min: -90,
+                max: 10,
+                grid: { color: "rgba(136,135,128,0.15)" },
+                border: { color: "rgba(136,135,128,0.25)" },
+                ticks: { color: "#888780", font: { size: 11 }, callback: v => v + " dB" },
+                title: { display: true, text: "Power (dB)", color: "#888780", font: { size: 12 } }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    ["clk", "amp", "nreg"].forEach(id => {
+      document.getElementById(id).addEventListener("input", update);
+    });
+
+    update();
+  </script>
+</body>
+</html>

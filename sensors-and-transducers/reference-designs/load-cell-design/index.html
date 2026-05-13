@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://kb.macrolab.nl/sensors-and-transducers/strain-gauges/">
+        <link rel="canonical" href="https://kb.macrolab.nl/sensors-and-transducers/reference-designs/load-cell-design/">
       
       
-        <link rel="prev" href="../load-cell-design/">
+        <link rel="prev" href="../../calibration/">
       
       
-        <link rel="next" href="../../electronics/Ethernet-IP-for-communication-between-devices/">
+        <link rel="next" href="../../types-of-transducers/accelerometers/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Strain gauges - Macrolab Knowledge Base</title>
+        <title>Load cell design - Macrolab Knowledge Base</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,11 +44,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../stylesheets/Temml-Asana.css">
+      <link rel="stylesheet" href="../../../stylesheets/Temml-Asana.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#theory" class="md-skip">
+        <a href="#initial-design-calculations" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Macrolab Knowledge Base" class="md-header__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
+    <a href="../../.." title="Macrolab Knowledge Base" class="md-header__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Strain gauges
+              Load cell design
             
           </span>
         </div>
@@ -187,7 +187,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../macrolab/" class="md-tabs__link">
+        <a href="../../../macrolab/" class="md-tabs__link">
           
   
   
@@ -209,7 +209,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../data-aquisition/" class="md-tabs__link">
+        <a href="../../../data-aquisition/" class="md-tabs__link">
           
   
   
@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../control-systems/" class="md-tabs__link">
+        <a href="../../../control-systems/" class="md-tabs__link">
           
   
   
@@ -255,7 +255,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -277,7 +277,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../electronics/Ethernet-IP-for-communication-between-devices/" class="md-tabs__link">
+        <a href="../../../electronics/Ethernet-IP-for-communication-between-devices/" class="md-tabs__link">
           
   
   
@@ -299,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../hydraulics/" class="md-tabs__link">
+        <a href="../../../hydraulics/" class="md-tabs__link">
           
   
   
@@ -335,7 +335,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Macrolab Knowledge Base" class="md-nav__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
+    <a href="../../.." title="Macrolab Knowledge Base" class="md-nav__button md-logo" aria-label="Macrolab Knowledge Base" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -398,7 +398,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../macrolab/" class="md-nav__link ">
+            <a href="../../../macrolab/" class="md-nav__link ">
               
   
   
@@ -442,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/general-conventions/" class="md-nav__link">
+      <a href="../../../macrolab/general-conventions/" class="md-nav__link">
         
   
   
@@ -471,6 +471,8 @@
   
     
     
+      
+        
       
         
       
@@ -524,7 +526,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/testing-machines/form-test-up50/" class="md-nav__link">
+      <a href="../../../macrolab/testing-machines/dowty-rotol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dowty Rotol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../macrolab/testing-machines/form-test-up50/" class="md-nav__link">
         
   
   
@@ -560,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/standard-pinouts/" class="md-nav__link">
+      <a href="../../../macrolab/standard-pinouts/" class="md-nav__link">
         
   
   
@@ -611,7 +641,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../macrolab/3d-printing/" class="md-nav__link ">
+            <a href="../../../macrolab/3d-printing/" class="md-nav__link ">
               
   
   
@@ -655,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/3d-printing/bambu-x1e/" class="md-nav__link">
+      <a href="../../../macrolab/3d-printing/bambu-x1e/" class="md-nav__link">
         
   
   
@@ -714,7 +744,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../macrolab/dic/" class="md-nav__link ">
+            <a href="../../../macrolab/dic/" class="md-nav__link ">
               
   
   
@@ -758,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/dic/Sony%20Mirrorless%20Cameras/" class="md-nav__link">
+      <a href="../../../macrolab/dic/Sony%20Mirrorless%20Cameras/" class="md-nav__link">
         
   
   
@@ -825,7 +855,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../macrolab/eu-standards-and-regulations/" class="md-nav__link ">
+            <a href="../../../macrolab/eu-standards-and-regulations/" class="md-nav__link ">
               
   
   
@@ -869,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/eu-standards-and-regulations/ce-compliance/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/ce-compliance/" class="md-nav__link">
         
   
   
@@ -897,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/eu-standards-and-regulations/Electrical%20safety/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Electrical%20safety/" class="md-nav__link">
         
   
   
@@ -925,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/eu-standards-and-regulations/Hydraulic%20fluid%20power/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Hydraulic%20fluid%20power/" class="md-nav__link">
         
   
   
@@ -953,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/eu-standards-and-regulations/Safety%20of%20machinery/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Safety%20of%20machinery/" class="md-nav__link">
         
   
   
@@ -981,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../macrolab/eu-standards-and-regulations/Technical%20documentation/" class="md-nav__link">
+      <a href="../../../macrolab/eu-standards-and-regulations/Technical%20documentation/" class="md-nav__link">
         
   
   
@@ -1053,7 +1083,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../data-aquisition/" class="md-nav__link ">
+            <a href="../../../data-aquisition/" class="md-nav__link ">
               
   
   
@@ -1120,7 +1150,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../data-aquisition/Devices/" class="md-nav__link ">
+            <a href="../../../data-aquisition/Devices/" class="md-nav__link ">
               
   
   
@@ -1164,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Devices/U1731B/" class="md-nav__link">
+      <a href="../../../data-aquisition/Devices/U1731B/" class="md-nav__link">
         
   
   
@@ -1256,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp3/csv-files/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp3/csv-files/" class="md-nav__link">
         
   
   
@@ -1284,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp3/lua-scripting/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp3/lua-scripting/" class="md-nav__link">
         
   
   
@@ -1376,7 +1406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp4/Features/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp4/Features/" class="md-nav__link">
         
   
   
@@ -1464,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp4/Dev%20notes/DAQ%20Devices/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp4/Dev%20notes/DAQ%20Devices/" class="md-nav__link">
         
   
   
@@ -1492,7 +1522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp4/Dev%20notes/data-visualisation/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp4/Dev%20notes/data-visualisation/" class="md-nav__link">
         
   
   
@@ -1520,7 +1550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp4/Dev%20notes/GLFW%20-%20Drag%20and%20drop%20files/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp4/Dev%20notes/GLFW%20-%20Drag%20and%20drop%20files/" class="md-nav__link">
         
   
   
@@ -1548,7 +1578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/Mp4/Dev%20notes/Multi-viewport/" class="md-nav__link">
+      <a href="../../../data-aquisition/Mp4/Dev%20notes/Multi-viewport/" class="md-nav__link">
         
   
   
@@ -1646,7 +1676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-aquisition/NI%20DAQMX/Synchronization%20between%20multiple%20USB%20DAQMX%20devices/" class="md-nav__link">
+      <a href="../../../data-aquisition/NI%20DAQMX/Synchronization%20between%20multiple%20USB%20DAQMX%20devices/" class="md-nav__link">
         
   
   
@@ -1722,7 +1752,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../control-systems/" class="md-nav__link ">
+            <a href="../../../control-systems/" class="md-nav__link ">
               
   
   
@@ -1766,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/Load-protect-vs.-load-limit/" class="md-nav__link">
+      <a href="../../../control-systems/Load-protect-vs.-load-limit/" class="md-nav__link">
         
   
   
@@ -1794,7 +1824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/PID/" class="md-nav__link">
+      <a href="../../../control-systems/PID/" class="md-nav__link">
         
   
   
@@ -1822,7 +1852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/Tuning/" class="md-nav__link">
+      <a href="../../../control-systems/Tuning/" class="md-nav__link">
         
   
   
@@ -1875,7 +1905,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../control-systems/controller-hardware/" class="md-nav__link ">
+            <a href="../../../control-systems/controller-hardware/" class="md-nav__link ">
               
   
   
@@ -1919,7 +1949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/controller-hardware/control-2/" class="md-nav__link">
+      <a href="../../../control-systems/controller-hardware/control-2/" class="md-nav__link">
         
   
   
@@ -1947,7 +1977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/controller-hardware/control-5/" class="md-nav__link">
+      <a href="../../../control-systems/controller-hardware/control-5/" class="md-nav__link">
         
   
   
@@ -2004,7 +2034,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../control-systems/Re1/" class="md-nav__link ">
+            <a href="../../../control-systems/Re1/" class="md-nav__link ">
               
   
   
@@ -2107,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/Re2/Development%20notes/" class="md-nav__link">
+      <a href="../../../control-systems/Re2/Development%20notes/" class="md-nav__link">
         
   
   
@@ -2135,7 +2165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../control-systems/Re2/Re2%20-%20Controller%20HMI/" class="md-nav__link">
+      <a href="../../../control-systems/Re2/Re2%20-%20Controller%20HMI/" class="md-nav__link">
         
   
   
@@ -2192,12 +2222,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -2216,7 +2240,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -2260,7 +2284,293 @@
   
   
     <li class="md-nav__item">
-      <a href="../accelerometers/" class="md-nav__link">
+      <a href="../../calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference designs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference designs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Load cell design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Load cell design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initial-design-calculations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial design calculations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizing-the-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimizing the design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-factor-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the factor 2.6
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the factor 2.6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-more-strain-gauges-to-get-higer-sensitivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding more strain gauges to get higer sensitivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types of transducers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Types of transducers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types-of-transducers/accelerometers/" class="md-nav__link">
         
   
   
@@ -2288,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../displacement-transducers/" class="md-nav__link">
+      <a href="../../types-of-transducers/displacement-transducers/" class="md-nav__link">
         
   
   
@@ -2316,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../force-transducers/" class="md-nav__link">
+      <a href="../../types-of-transducers/force-transducers/" class="md-nav__link">
         
   
   
@@ -2344,7 +2654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../geophones/" class="md-nav__link">
+      <a href="../../types-of-transducers/geophones/" class="md-nav__link">
         
   
   
@@ -2372,14 +2682,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../load-cell-design/" class="md-nav__link">
+      <a href="../../types-of-transducers/strain-gauges/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Load cell design
+    Strain gauges
   
 
     
@@ -2393,154 +2703,8 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Strain gauges
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Strain gauges
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#theory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Theory
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Theory">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gauge-factor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gauge factor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#converting-mvv-to-strain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Converting mV/V to strain
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#converting-voltage-to-strain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Converting voltage to strain
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-strain-with-a-resistor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adding strain with a resistor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bridge-completion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bridge completion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definitions
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+          </ul>
+        </nav>
       
     </li>
   
@@ -2619,7 +2783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../electronics/Ethernet-IP-for-communication-between-devices/" class="md-nav__link">
+      <a href="../../../electronics/Ethernet-IP-for-communication-between-devices/" class="md-nav__link">
         
   
   
@@ -2647,7 +2811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../electronics/Power%20supply%20considerations/" class="md-nav__link">
+      <a href="../../../electronics/Power%20supply%20considerations/" class="md-nav__link">
         
   
   
@@ -2731,7 +2895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../electronics/product-design-guidelines/D%20sub%20connectors/" class="md-nav__link">
+      <a href="../../../electronics/product-design-guidelines/D%20sub%20connectors/" class="md-nav__link">
         
   
   
@@ -2759,7 +2923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../electronics/product-design-guidelines/Design%20examples/" class="md-nav__link">
+      <a href="../../../electronics/product-design-guidelines/Design%20examples/" class="md-nav__link">
         
   
   
@@ -2833,7 +2997,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../hydraulics/" class="md-nav__link ">
+            <a href="../../../hydraulics/" class="md-nav__link ">
               
   
   
@@ -2877,7 +3041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hydraulics/axial-piston-variable-pump/" class="md-nav__link">
+      <a href="../../../hydraulics/axial-piston-variable-pump/" class="md-nav__link">
         
   
   
@@ -2905,7 +3069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hydraulics/hydraulic-manifold/" class="md-nav__link">
+      <a href="../../../hydraulics/hydraulic-manifold/" class="md-nav__link">
         
   
   
@@ -2933,7 +3097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hydraulics/quick-couplings/" class="md-nav__link">
+      <a href="../../../hydraulics/quick-couplings/" class="md-nav__link">
         
   
   
@@ -2961,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hydraulics/Servovalve/" class="md-nav__link">
+      <a href="../../../hydraulics/Servovalve/" class="md-nav__link">
         
   
   
@@ -2989,7 +3153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hydraulics/tube-and-hose/" class="md-nav__link">
+      <a href="../../../hydraulics/tube-and-hose/" class="md-nav__link">
         
   
   
@@ -3042,77 +3206,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#theory" class="md-nav__link">
+  <a href="#initial-design-calculations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Theory
+        Initial design calculations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Theory">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizing-the-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimizing the design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-factor-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the factor 2.6
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the factor 2.6">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#gauge-factor" class="md-nav__link">
+  <a href="#adding-more-strain-gauges-to-get-higer-sensitivity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gauge factor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#converting-mvv-to-strain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Converting mV/V to strain
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#converting-voltage-to-strain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Converting voltage to strain
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-strain-with-a-resistor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adding strain with a resistor
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bridge-completion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bridge completion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definitions
+        Adding more strain gauges to get higer sensitivity
       
     </span>
   </a>
@@ -3144,205 +3286,100 @@
   
 
 
-  <h1>Strain gauges</h1>
+  <h1>Load cell design</h1>
 
-<h2 id="theory">Theory</h2>
-<p>Strain is a physical property describing the geometrical deformation caused by applying an external stress to a body. Strain is unitless but strain values are denoted with the Greek letter epsilon <span class="arithmatex">\(\upepsilon\)</span>  or more commonly with <span class="arithmatex">\(\upmu\upepsilon\)</span>, when talking about microstrain. For example:  <span class="arithmatex">\(2000\;\upmu\upepsilon\)</span>. Sometimes you'll see a strain value denoted with <span class="arithmatex">\(\text{Str}\)</span> or <span class="arithmatex">\(\upmu\text{Str}\)</span>.</p>
-<div class="arithmatex">\[\epsilon = \frac{\Delta l}{l_0}\]</div>
-<p>Strain gauges are precise electrical resistors which are sensitive to elongation. This sensitivity comes from the stretching of the conductor causing a decrease in its cross sectional area and thus a slight increase in it's resistance.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A commonly used strain gauge is the FLAB-6-11 from TML <img _="," align="right" alt="" src="../../media/FLAB-6-11.svg" width="300" /></p>
-<p>There are also stacked strain gauges available that are sensitive in three directions. These are called rosettes and a common type is the FRAB-6-11 from TML: <img _="," align="right" alt="" src="../../media/FRAB-6-11.svg" width="300" /></p>
-</div>
-<p>This relationship is as follows, where <span class="arithmatex">\(K\)</span> is constant given by the manufacturer of the strain gauge:</p>
-<div class="arithmatex">\[
-\epsilon \cdot K = \frac{\Delta R}{R} \quad\Rightarrow\quad \epsilon=\frac{\Delta R}{R\cdot K}
-\]</div>
-<h3 id="gauge-factor">Gauge factor</h3>
-<p>The gauge factor <span class="arithmatex">\(K\)</span> gives the relationship between the change of electrical resistance and the strain acting on the strain gauge. It is defined as follows:</p>
-<div class="arithmatex">\[
-K = \frac{\Delta R/R_0}{\epsilon}
-\]</div>
-<p>The gauge factor is dependent on the geometric shape of the conductor of the strain gauge, but its also influenced by it's <a href="https://en.wikipedia.org/wiki/Piezoresistive_effect">piezoresistive effect</a>. For common thin-film metal strain gauges (like the FLAB-6-11 from TML) this accounts for 20% of the gauge factor. The full definition for the gauge factor is as follows:</p>
-<div class="arithmatex">\[
-K = \frac{\Delta R/R_0}{\Delta l/l_0} = \frac{\Delta R/R_0}{\epsilon} = 1 + 2 \nu + \frac{\Delta \rho/\rho_0}{\epsilon}
-\]</div>
-<p>Some gauge factors for common strain gauge materials can be seen in the table below.</p>
+<h2 id="initial-design-calculations">Initial design calculations</h2>
 <table>
 <thead>
 <tr>
-<th>Material</th>
-<th>Gauge factor</th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Metal foil strain gauge</td>
-<td>2 to 5</td>
+<td>Force limit <span class="arithmatex">\(F_{max}\)</span></td>
+<td>200 kN</td>
 </tr>
 <tr>
-<td>Thin-film metal (e.g. constantan)</td>
-<td>2</td>
+<td>Measured strain at max load <span class="arithmatex">\(\epsilon\)</span></td>
+<td>2000 <span class="arithmatex">\(\upmu\upepsilon\)</span></td>
 </tr>
 <tr>
-<td>Single crystal silicon</td>
-<td>-125 to 200</td>
-</tr>
-<tr>
-<td>Polysilicon</td>
-<td>±30</td>
-</tr>
-<tr>
-<td>Thick-film resistors</td>
-<td>100</td>
-</tr>
-<tr>
-<td>p-type Germanium</td>
-<td>102</td>
+<td>Youngs modulus of steel (<span class="arithmatex">\(E\)</span>)</td>
+<td><span class="arithmatex">\(210\mathrm{MPa} = 210 \mathrm{N/mm^2}\)</span></td>
 </tr>
 </tbody>
 </table>
-<h3 id="converting-mvv-to-strain">Converting mV/V to strain</h3>
-<p>The mV/V value is the output voltage when a maximum load is applied to a transducer. It shows the output voltage generated when 1V excitation is applied.</p>
-<p>Often the sensitivity is specified in <span class="arithmatex">\(\text{mV}/\text{V}\)</span>. The table below shows values assuming <span class="arithmatex">\(K=2.0\)</span>.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Rated output (mV/V)</th>
-<th style="text-align: right;">Estimated effective strain (µε)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">1.0</td>
-<td style="text-align: right;">~500</td>
-</tr>
-<tr>
-<td style="text-align: right;">1.5</td>
-<td style="text-align: right;">~750</td>
-</tr>
-<tr>
-<td style="text-align: right;">2.0</td>
-<td style="text-align: right;">~1000</td>
-</tr>
-<tr>
-<td style="text-align: right;">2.5</td>
-<td style="text-align: right;">~1250</td>
-</tr>
-<tr>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">~1500</td>
-</tr>
-</tbody>
-</table>
-<p>The relationship between mV/V and microstrain depends on the gauge factor (<span class="arithmatex">\(K\)</span>).</p>
+<p>Relationship between strain, stress, force and area</p>
 <div class="arithmatex">\[
-\epsilon_\mu = \frac{\text{mV/V}\cdot1000}{K}
+\begin{gathered}
+\epsilon=\frac{\sigma}{E} \enspace\rightarrow\enspace \sigma=\epsilon E \cr
+F=\sigma\cdot A \enspace\rightarrow\enspace F=\epsilon\cdot E\cdot A \enspace\rightarrow\enspace \frac{F}{\epsilon\cdot E}=A
+\end{gathered}
 \]</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Load-cell manufacturers don’t publish GF because the finished load cell’s output is determined by mechanical design and trimming, not by the strain-gauge k-factor, making GF non-unique, non-measurable, and non-useful at the product level.</p>
+<p>Filling in the numbers, calculating the required area of the cross-section of the active region of the load cell.</p>
+<div class="arithmatex">\[
+A=\frac{200*10^3}{2*10^{-6} \cdot 210*10^6} \enspace\approx 476 \mathrm{mm^2}
+\]</div>
+<p>The stress in the material.</p>
+<div class="arithmatex">\[
+\sigma=200*10^{-6}\cdot 210\cdot 10^9 \enspace\approx 410 \mathrm{MPa}
+\]</div>
+<h2 id="optimizing-the-design">Optimizing the design</h2>
+<p><img alt="" src="../../../media/load-cell-design-01.png" /></p>
+<p>If we use four x/y strain gauges (eg. XY71-6/120 from HBM) we can create a double full bridge that's sensitive to strain in the force direction as well as strain caused by the Poisson effect. This will increase the measured strain by a factor of 2.6<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>We can now increase the wall thickness of the active region of the load cell and maintain the same output. Thus increasing the stiffness and resistance to bending.</p>
+<div class="arithmatex">\[
+A^*=A\cdot2.6\approx 1238 \mathrm{mm^2}
+\]</div>
+<p>The outer diameter of the active region is 60 mm (<span class="arithmatex">\(r_1 = 30\mathrm{mm}\)</span>). We can calculate the inner diameter (<span class="arithmatex">\(d_2\)</span>) as follows:</p>
+<div class="arithmatex">\[
+A=\pi\cdot ({r_1}^2-{r_2}^2) \enspace\rightarrow\enspace d_2=2\sqrt{{r_1}^2-\frac{A}{\pi}} \enspace\approx 45 \mathrm{mm}
+\]</div>
+<p>The maximal stress in the material is also a lot less now:</p>
+<div class="arithmatex">\[
+\sigma=\frac{200*10^{-6}\cdot 210\cdot 10^9}{2.6} \enspace\approx 158 \mathrm{MPa}
+\]</div>
+<h2 id="wiring">Wiring</h2>
+<p>The image below shows an optimized method of connecting the strain gauges preventing crossing of wires. </p>
+<p><img alt="" src="../../../media/load-cell-strain-gauges.svg" /></p>
+<p>The schematic representation of the circuit can be seen in the image below.</p>
+<figure>
+<p><img alt="" src="../../../media/loadcell_bridge.svg" width="300" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<h2 id="understanding-the-factor-26">Understanding the factor 2.6</h2>
+<p>The increase in sensitivity might not be obvious right away. So let's look at a simplification.</p>
+<figure>
+<p><img alt="" src="../../../media/wheatstone_bridge.svg" width="300" /></p>
+<figcaption>
+<p>Simplified wheatstone bridge circuit</p>
+</figcaption>
+</figure>
+<p>Let's say R1 and R4 are both active strain elements placed in the force direction of the load cell. An increase in force will induce an increase in resistance in these strain gauges. </p>
+<p>Assuming a change of 1000 <span class="arithmatex">\(\upmu\upepsilon\)</span> (which is 0.1%), R1 and R4 both increase resistance proportionally. Let's assume a K-factor of 1 for now, so the resistance also inceases 0.1 %. R1 is based in the positive side of the bridge, and R4 in the negative side. </p>
+<div class="arithmatex">\[
+\begin{aligned}
+V_{out}&amp;=V_E-V_F \\
+&amp;=0.1-(-0.1) \\
+&amp;=0.2
+\end{aligned}
+\]</div>
+<p>Here you see a factor 2 output, because the change in strain affects the output equally on the positive as the negative side of the bridge.</p>
+<p>As mentioned above, the factor 0.6 comes from the transverse strain gauges which are sensitive to the Poisson's ratio of deformation in the direction perpendicular to the force on the load cell.</p>
+<h3 id="adding-more-strain-gauges-to-get-higer-sensitivity">Adding more strain gauges to get higer sensitivity</h3>
+<p>Adding more strain gauges in series will not increase the bridge sensitivity. As these gauges will just act the same as one larger strain gauge. This will increase only the averaging effect and might decrease sensitivity to local defects in the material.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Assuming the Poisson's ratio of steel to be 0.30 from <a href="https://en.wikipedia.org/wiki/Poisson%27s_ratio#Poisson's_ratio_values_for_different_materials">Wikipedia</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A load cell has a sensitivity <span class="arithmatex">\(S = 2.0\;\text{mV}/\text{V}\)</span> and a rated capacity <span class="arithmatex">\(M_{max} = 1000\;\text{kg}\)</span>. 
-The excitation voltage <span class="arithmatex">\(U_s = 6\;\text{V}\)</span>, therefore the full scale output of the load cell is <span class="arithmatex">\(2\cdot6 = 12\;\text{mV}\)</span>
-If you have an amplifier with <span class="arithmatex">\(G=1000\)</span> the output voltage of the amplified signal at full scale is </p>
-<div class="arithmatex">\[
-12\cdot10^{-3}\cdot1000=12 \;\text{V}
-\]</div>
-<p>Now the conversion factor <span class="arithmatex">\(C\)</span> in the data-aquisition system is</p>
-<div class="arithmatex">\[
-C=\frac{1000\cdot9.81}{12} = 817,5\;\text{N}/\text{V}
-\]</div>
-</div>
-<h3 id="converting-voltage-to-strain">Converting voltage to strain</h3>
-<p>To calculate the conversion factor it's important to know the gauge factor <span class="arithmatex">\(K\)</span>, the bridge configuration, the excitation voltage <span class="arithmatex">\(U_s\)</span> and the amplifier gain <span class="arithmatex">\(G\)</span>.</p>
-<p>For a 1/4 bridge (1 active gauge and 3 dummy resistors) the relationship between the output voltage and the strain is defined as:
-$$
-\epsilon = \frac{4}{K}\cdot\frac{U_o}{U_s}\cdot G
-$$
-The conversion factor <span class="arithmatex">\(C\)</span> can be defined as:
-$$ C= [\upmu\upepsilon/\text{V}] $$</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>A single strain gauge with a gauge factor <span class="arithmatex">\(K=2.08\)</span>, 1/4 bridge, and excitation voltage <span class="arithmatex">\(U_s=6 \text{v}\)</span>, and an amplifier gain <span class="arithmatex">\(G=1000\)</span>.
-$$
-\epsilon = \frac{4}{2.08}\cdot\frac{U_o}{6}\cdot 1000
-$$</p>
-</div>
-<h3 id="adding-strain-with-a-resistor">Adding strain with a resistor</h3>
-<p>You can test a Wheatstone bridge by adding a resistor in parallel with a strain gauge. This will give the same effect as strain applied to the gauge.</p>
-<p><strong>Adding 56 kΩ in parallel with 120 Ω</strong></p>
-<table>
-<thead>
-<tr>
-<th>k</th>
-<th><span class="arithmatex">\(\upmu\upepsilon\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.00</td>
-<td>1069</td>
-</tr>
-<tr>
-<td>2.11</td>
-<td>1013</td>
-</tr>
-<tr>
-<td>2.12</td>
-<td>1008</td>
-</tr>
-<tr>
-<td>2.13</td>
-<td>1003</td>
-</tr>
-<tr>
-<td>2.14</td>
-<td>999</td>
-</tr>
-</tbody>
-</table>
-<h3 id="bridge-completion">Bridge completion</h3>
-<p>Use 1206 SMD resistors, they are less sensitive to mechanical strain. Make sure the temperature coefficient is lower than ± 25ppm/°C. This is a common value for ± 0.1% tolerance resistors.</p>
-<p>For example ± 100ppm/°C 120 Ω resistors can change about 12 mΩ (50 µε) per degree Celsius. Which is way too much for most strain measurements.</p>
-<table>
-<thead>
-<tr>
-<th>Manufacturer</th>
-<th>Part nr.</th>
-<th>Resistance</th>
-<th>Temperature coefficient</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Panasonic</td>
-<td>ERA8AEB121V</td>
-<td>120 ± 0.1% Ω</td>
-<td>± 25ppm/°C</td>
-</tr>
-</tbody>
-</table>
-<h3 id="definitions">Definitions</h3>
-<div class="arithmatex">\[
-\begin{align}
-\upepsilon&amp;:\text{strain unit}\\
-\sigma &amp;: \text{stress }&amp;[\text{N}/\text{mm}^2 = \text{MPa}]\\
-\nu &amp;: \text{Poisson's ratio} \\
-A &amp;: \text{area}&amp;[\text{mm}^2]\\
-E &amp;: \text{modulus of elasticity} &amp; [\text{N}/\text{mm}^2 = \text{MPa}]\\
-F &amp;: \text{force} &amp; [\text{N}]\\
-R &amp;: \text{resistance} &amp; [\Omega]\\
-\rho &amp;: \text{specific electrical resistance} &amp; [\Omega \text{m}]\\
-K &amp;: \text{gauge factor}\\
-l &amp;: \text{length} &amp; [\text{m}]\\
-l_0 &amp;: \text{initial length} &amp; [\text{m}]\\
-\upmu\upepsilon &amp;: \text{notation of units of microstrain}
-\end{align}
-\]</div>
 
 
 
@@ -3365,7 +3402,7 @@ l_0 &amp;: \text{initial length} &amp; [\text{m}]\\
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 11, 2026 16:10:53 UTC">May 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 12, 2026 16:33:19 UTC">February 12, 2026</span>
   </span>
 
     
@@ -3375,7 +3412,7 @@ l_0 &amp;: \text{initial length} &amp; [\text{m}]\\
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 11, 2026 16:10:53 UTC">May 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 6, 2026 08:11:37 UTC">February 6, 2026</span>
   </span>
 
     
@@ -3440,14 +3477,14 @@ l_0 &amp;: \text{initial length} &amp; [\text{m}]\\
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.indexes", "content.code.copy", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.indexes", "content.code.copy", "content.footnote.tooltips"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../javascripts/temml.js"></script>
+        <script src="../../../javascripts/temml.js"></script>
       
-        <script src="../../assets/external/unpkg.com/temml@0/dist/temml.min.js"></script>
+        <script src="../../../assets/external/unpkg.com/temml@0/dist/temml.min.js"></script>
       
     
   </body>
