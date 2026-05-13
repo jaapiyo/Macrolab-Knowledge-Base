@@ -27,6 +27,8 @@ $$
 $$
 
 ## Optimizing the design
+![](../../media/load-cell-design-01.png)
+
 If we use four x/y strain gauges (eg. XY71-6/120 from HBM) we can create a double full bridge that's sensitive to strain in the force direction as well as strain caused by the Poisson effect. This will increase the measured strain by a factor of 2.6[^1].
 [^1]: Assuming the Poisson's ratio of steel to be 0.30 from [Wikipedia](https://en.wikipedia.org/wiki/Poisson%27s_ratio#Poisson's_ratio_values_for_different_materials)
 
@@ -51,11 +53,11 @@ $$
 ## Wiring
 The image below shows an optimized method of connecting the strain gauges preventing crossing of wires. 
 
-![](../media/load-cell-strain-gauges.svg)
+![](../../media/load-cell-strain-gauges.svg)
 
 The schematic representation of the circuit can be seen in the image below.
 
-![](../media/loadcell_bridge.svg){ width="300" }
+![](../../media/loadcell_bridge.svg){ width="300" }
 /// caption
 Image caption
 ///
@@ -63,7 +65,7 @@ Image caption
 ## Understanding the factor 2.6
 The increase in sensitivity might not be obvious right away. So let's look at a simplification.
 
-![](../media/wheatstone_bridge.svg){ width="300" }
+![](../../media/wheatstone_bridge.svg){ width="300" }
 /// caption
 Simplified wheatstone bridge circuit
 ///

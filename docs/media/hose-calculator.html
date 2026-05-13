@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hydraulic Hose Calculator</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #202020;
+      --muted: #6f6c64;
+      --panel: #f6f6f4;
+      --grid: rgba(136, 135, 128, 0.15);
+      --border: rgba(136, 135, 128, 0.25);
+      --blue: #378add;
+      --orange: #d85a30;
+      --green: #3b6d11;
+      --danger: #e24b4a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .hose-calc {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .description {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 14px;
+      line-height: 1.55;
+      max-width: 80ch;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    /* @media (max-width: 800px) {
+      .controls,
+      .results {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    } */
+
+    .control-card {
+      background: var(--panel);
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .control-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .input-row input[type="number"] {
+      flex: 1;
+      min-width: 0;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .input-row input[type="number"]:focus,
+    select:focus {
+      outline: 2px solid var(--blue);
+      outline-offset: 1px;
+    }
+
+    select {
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { opacity: 0.5; }
+
+    /* ── Results ── */
+    .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 10px 0 4px;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .result-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+
+    .result-card.highlight {
+      background: #edf3fb;
+      border-color: var(--blue);
+    }
+
+    .result-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .result-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .result-card.highlight .result-value {
+      color: var(--blue);
+    }
+
+    .result-card.warn .result-value {
+      color: var(--orange);
+    }
+
+    /* ── Nomogram ── */
+    .frame {
+      position: relative;
+      width: 100%;
+      /* border: 1px solid var(--border);
+      border-radius: 8px; */
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .frame canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      /* aspect-ratio: 900 / 320; */
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="hose-calc">
+    <span class="sr-only">Hydraulic hose sizing calculator</span>
+
+    <section class="controls" aria-label="Input parameters">
+
+      <article class="control-card">
+        <div class="control-title">Flow rate (Q)</div>
+        <div class="input-row">
+          <input id="hw-flow" type="number" min="0.1" step="0.1" value="70">
+          <select id="hw-flow-unit">
+            <option value="lpm">L/min</option>
+            <option value="m3h">m&sup3;/h</option>
+            <option value="gpm">GPM</option>
+          </select>
+        </div>
+      </article>
+
+      <article class="control-card">
+        <div class="control-title">Max fluid velocity (v)</div>
+        <div class="input-row">
+          <input id="hw-vel" type="number" min="0.1" step="0.1" value="6">
+          <select id="hw-vel-unit">
+            <option value="ms">m/s</option>
+            <option value="fts">ft/s</option>
+          </select>
+        </div>
+        <div class="hint">Pressure lines: 2&ndash;6 m/s &nbsp;&middot;&nbsp; Return: &le; 2 m/s</div>
+      </article>
+
+      <article class="control-card">
+        <div class="control-title">Hose / pipe length (L)</div>
+        <div class="input-row">
+          <input id="hw-len" type="number" min="0.1" step="0.1" value="10">
+          <select id="hw-len-unit">
+            <option value="m">m</option>
+            <option value="ft">ft</option>
+          </select>
+        </div>
+      </article>
+
+      <article class="control-card">
+        <div class="control-title">Hydraulic fluid grade</div>
+        <div class="input-row">
+          <select id="hw-fluid" style="flex: 1;">
+            <option value="iso46" selected>ISO VG 46</option>
+            <option value="iso32">ISO VG 32</option>
+            <option value="iso68">ISO VG 68</option>
+            <option value="iso100">ISO VG 100</option>
+          </select>
+        </div>
+        <div class="hint">Typical mineral hydraulic oil grades</div>
+      </article>
+
+      <article class="control-card">
+        <div class="control-title">Fluid temperature (T)</div>
+        <div class="input-row">
+          <input id="hw-temp" type="number" min="-20" max="100" step="1" value="40">
+          <span style="padding: 6px 8px; white-space: nowrap;">&deg;C</span>
+        </div>
+        <div class="hint">ISO grade viscosity refers to 40°C baseline</div>
+      </article>
+
+    </section>
+
+    <div class="subtitle">Results</div>
+    <section class="results" id="hw-results" aria-label="Calculation results">
+      <article class="result-card highlight">
+        <div class="result-label">Recommended nominal diameter</div>
+        <div class="result-value" id="hw-d-nom">&mdash;</div>
+      </article>
+      <article class="result-card">
+        <div class="result-label">Min. internal diameter (exact)</div>
+        <div class="result-value" id="hw-d-exact">&mdash;</div>
+      </article>
+      <article class="result-card" id="hw-vel-card">
+        <div class="result-label">Actual velocity at nominal bore</div>
+        <div class="result-value" id="hw-v-actual">&mdash;</div>
+      </article>
+      <article class="result-card">
+        <div class="result-label">Reynolds number (Re)</div>
+        <div class="result-value" id="hw-re">&mdash;</div>
+      </article>
+      <article class="result-card">
+        <div class="result-label">Friction factor (f)</div>
+        <div class="result-value" id="hw-f">&mdash;</div>
+      </article>
+      <article class="result-card">
+        <div class="result-label">Pressure drop (Darcy–Weisbach)</div>
+        <div class="result-value" id="hw-dp">&mdash;</div>
+      </article>
+    </section>
+
+    <div class="subtitle">Flow nomogram &mdash; D&nbsp;=&nbsp;&radic;(4Q&nbsp;/&nbsp;&pi;v)</div>
+    <div class="frame">
+      <canvas id="hw-canvas" width="900" height="320"
+              aria-label="Log-log nomogram of internal diameter vs flow rate for multiple fluid velocities"></canvas>
+    </div>
+  </main>
+
+  <script>
+  (function () {
+    const NOMINAL_MM = [4, 5, 6, 8, 10, 12, 16, 19, 20, 25, 32, 38, 40, 50, 51, 63, 76, 80, 100];
+
+    // Fluid viscosity data (cSt = mm²/s) at various temperatures
+    const FLUIDS = {
+      iso32: {
+        name: 'ISO VG 32',
+        density: 870, // kg/m³
+        visc: { 0: 100, 10: 60, 20: 42, 30: 32, 40: 32, 50: 26, 60: 22, 70: 18, 80: 16, 90: 14, 100: 11 }
+      },
+      iso46: {
+        name: 'ISO VG 46',
+        density: 875,
+        visc: { 0: 130, 10: 80, 20: 58, 30: 44, 40: 46, 50: 37, 60: 30, 70: 25, 80: 21, 90: 18, 100: 15 }
+      },
+      iso68: {
+        name: 'ISO VG 68',
+        density: 880,
+        visc: { 0: 160, 10: 100, 20: 72, 30: 55, 40: 68, 50: 54, 60: 44, 70: 37, 80: 31, 90: 26, 100: 21 }
+      },
+      iso100: {
+        name: 'ISO VG 100',
+        density: 885,
+        visc: { 0: 200, 10: 130, 20: 95, 30: 72, 40: 100, 50: 78, 60: 62, 70: 51, 80: 43, 90: 36, 100: 29 }
+      }
+    };
+
+    function getViscosity(grade, tempC) {
+      const fluid = FLUIDS[grade];
+      const temps = Object.keys(fluid.visc).map(Number).sort((a, b) => a - b);
+      if (tempC <= temps[0]) return fluid.visc[temps[0]];
+      if (tempC >= temps[temps.length - 1]) return fluid.visc[temps[temps.length - 1]];
+      
+      // Linear interpolation
+      for (let i = 0; i < temps.length - 1; i++) {
+        if (tempC >= temps[i] && tempC <= temps[i + 1]) {
+          const t1 = temps[i], t2 = temps[i + 1];
+          const v1 = fluid.visc[t1], v2 = fluid.visc[t2];
+          return v1 + (v2 - v1) * (tempC - t1) / (t2 - t1);
+        }
+      }
+      return fluid.visc[temps[0]];
+    }
+
+    function swameeJain(re, relRough) {
+      if (re < 2300) return 64 / re; // Laminar
+      // Turbulent: Swamee-Jain approximation
+      const term1 = relRough / 3.7;
+      const term2 = 5.74 / Math.pow(re, 0.9);
+      return 0.25 / Math.pow(Math.log10(term1 + term2), 2);
+    }
+
+    function nextNominal(d_mm) {
+      return NOMINAL_MM.find(s => s >= d_mm) || NOMINAL_MM[NOMINAL_MM.length - 1];
+    }
+
+    function getInputs() {
+      const Q_raw   = parseFloat(document.getElementById('hw-flow').value) || 0;
+      const v_raw   = parseFloat(document.getElementById('hw-vel').value)  || 0;
+      const L_raw   = parseFloat(document.getElementById('hw-len').value)  || 0;
+      const grade   = document.getElementById('hw-fluid').value;
+      const tempC   = parseFloat(document.getElementById('hw-temp').value) || 40;
+      const flowUnit = document.getElementById('hw-flow-unit').value;
+      const velUnit  = document.getElementById('hw-vel-unit').value;
+      const lenUnit  = document.getElementById('hw-len-unit').value;
+
+      const Q = flowUnit === 'lpm' ? Q_raw / 60000
+              : flowUnit === 'm3h' ? Q_raw / 3600
+              : Q_raw * 6.30902e-5;
+
+      const v = velUnit === 'ms'  ? v_raw : v_raw * 0.3048;
+      const L = lenUnit === 'm'   ? L_raw : L_raw * 0.3048;
+      return { Q, v, L, grade, tempC, flowUnit, velUnit };
+    }
+
+    function hwCalc() {
+      const { Q, v, L, grade, tempC, flowUnit, velUnit } = getInputs();
+      if (Q <= 0 || v <= 0 || L <= 0) return;
+
+      const fluid = FLUIDS[grade];
+      const visc_cSt = getViscosity(grade, tempC);
+      const visc_m2s = visc_cSt / 1e6; // Convert cSt to m²/s
+      const rho = fluid.density; // kg/m³
+
+      const D_exact_m  = Math.sqrt(4 * Q / (Math.PI * v));
+      const D_exact_mm = D_exact_m * 1000;
+      const D_nom_mm   = nextNominal(D_exact_mm);
+      const D_nom_m    = D_nom_mm / 1000;
+      const A_nom      = Math.PI * D_nom_m * D_nom_m / 4;
+      const v_actual   = Q / A_nom;
+
+      // Reynolds number
+      const Re = (v_actual * D_nom_m) / visc_m2s;
+      
+      // Relative roughness for smooth hose (absolute roughness ≈ 0.05 mm)
+      const eps = 0.00005;
+      const epsD = eps / D_nom_m;
+      
+      // Friction factor (Swamee-Jain)
+      const f = swameeJain(Re, epsD);
+      
+      // Darcy-Weisbach pressure drop: ΔP = f·(L/D)·(rho·v²/2)
+      const dp_pa = f * (L / D_nom_m) * (rho * v_actual * v_actual / 2);
+      const dp_bar = dp_pa / 1e5;
+
+      document.getElementById('hw-d-exact').textContent = D_exact_mm.toFixed(1) + ' mm';
+      document.getElementById('hw-d-nom').textContent   = D_nom_mm + ' mm  (DN ' + D_nom_mm + ')';
+      document.getElementById('hw-v-actual').textContent = v_actual.toFixed(2) + ' m/s';
+      document.getElementById('hw-re').textContent      = Re.toFixed(0) + (Re < 2300 ? ' (laminar)' : ' (turbulent)');
+      document.getElementById('hw-f').textContent       = f.toFixed(5);
+      document.getElementById('hw-dp').textContent      = dp_bar.toFixed(1) + ' bar  (' + (dp_pa / 1000).toFixed(1) + ' kPa)';
+
+      // Warn card if actual velocity exceeds the requested max
+      const velCard = document.getElementById('hw-vel-card');
+      velCard.classList.toggle('warn', v_actual > v * 1.01);
+
+      drawNomogram(Q, v, D_exact_mm, D_nom_mm);
+    }
+
+    function drawNomogram(Q_m3s, v_ms, D_exact_mm, D_nom_mm) {
+      const canvas = document.getElementById('hw-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      // Sync drawing buffer to CSS display size so text is always full-resolution
+      const displayW = canvas.clientWidth  || 900;
+      const displayH = canvas.clientHeight || 320;
+      if (canvas.width !== displayW || canvas.height !== displayH) {
+        canvas.width  = displayW;
+        canvas.height = displayH;
+      }
+      const W = canvas.width, H = canvas.height;
+      const pad = { top: 32, right: 20, bottom: 44, left: 58 };
+
+      ctx.clearRect(0, 0, W, H);
+
+      const Q_lpm_min = 0.5, Q_lpm_max = 500;
+      const D_mm_min  = 3,   D_mm_max  = 130;
+
+      function xPos(q) {
+        return pad.left + (Math.log10(q) - Math.log10(Q_lpm_min)) /
+               (Math.log10(Q_lpm_max) - Math.log10(Q_lpm_min)) * (W - pad.left - pad.right);
+      }
+      function yPos(d) {
+        return H - pad.bottom - (Math.log10(d) - Math.log10(D_mm_min)) /
+               (Math.log10(D_mm_max) - Math.log10(D_mm_min)) * (H - pad.top - pad.bottom);
+      }
+
+      // Background grid
+      ctx.strokeStyle = 'rgba(136,135,128,0.15)';
+      ctx.lineWidth = 1;
+      [1, 2, 5, 10, 20, 50, 100, 200, 500].forEach(q => {
+        const x = xPos(q);
+        ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, H - pad.bottom); ctx.stroke();
+      });
+      [4, 5, 6, 8, 10, 12, 16, 20, 25, 32, 50, 80, 100].forEach(d => {
+        const y = yPos(d);
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W - pad.right, y); ctx.stroke();
+      });
+
+      // Velocity curves
+      const velocities = [1, 2, 3, 4, 6, 8, 10, 12];
+      const curveColors = [
+        '#c8d8ea', '#90bbdd', '#5b9dce', '#378add',
+        '#1f5fa6', '#d85a30', '#a03d1e', '#6f2510'
+      ];
+
+      velocities.forEach((vc, i) => {
+        ctx.beginPath();
+        ctx.strokeStyle = curveColors[i];
+        ctx.lineWidth = 1.5;
+        let first = true;
+        for (let q = Q_lpm_min; q <= Q_lpm_max * 1.01; q *= 1.05) {
+          const d = Math.sqrt(4 * (q / 60000) / (Math.PI * vc)) * 1000;
+          if (d < D_mm_min || d > D_mm_max) { first = true; continue; }
+          const x = xPos(q), y = yPos(d);
+          first ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          first = false;
+        }
+        ctx.stroke();
+
+        const q_lbl = Q_lpm_max * 0.85;
+        const d_lbl = Math.sqrt(4 * (q_lbl / 60000) / (Math.PI * vc)) * 1000;
+        if (d_lbl >= D_mm_min && d_lbl <= D_mm_max) {
+          ctx.fillStyle = curveColors[i];
+          ctx.font = '10px Arial, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(vc + ' m/s', xPos(q_lbl * 1.02), yPos(d_lbl) - 3);
+        }
+      });
+
+      // Axes
+      ctx.strokeStyle = 'rgba(136,135,128,0.5)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, pad.top);
+      ctx.lineTo(pad.left, H - pad.bottom);
+      ctx.lineTo(W - pad.right, H - pad.bottom);
+      ctx.stroke();
+
+      ctx.fillStyle = '#888780';
+      ctx.font = '11px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      [1, 2, 5, 10, 20, 50, 100, 200, 500].forEach(q => {
+        ctx.fillText(q, xPos(q), H - pad.bottom + 14);
+      });
+      ctx.fillStyle = '#888780';
+      ctx.font = '12px Arial, sans-serif';
+      ctx.fillText('Flow rate (L/min)', (pad.left + W - pad.right) / 2, H - 6);
+
+      ctx.fillStyle = '#888780';
+      ctx.font = '11px Arial, sans-serif';
+      ctx.textAlign = 'right';
+      [4, 5, 6, 8, 10, 12, 16, 20, 25, 32, 50, 80, 100].forEach(d => {
+        ctx.fillText(d, pad.left - 5, yPos(d) + 4);
+      });
+      ctx.save();
+      ctx.translate(14, (pad.top + H - pad.bottom) / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.textAlign = 'center';
+      ctx.font = '12px Arial, sans-serif';
+      ctx.fillText('Internal diameter (mm)', 0, 0);
+      ctx.restore();
+
+      // Title
+      ctx.fillStyle = '#6f6c64';
+      ctx.font = '11px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Velocity curves: 1, 2, 3, 4, 6, 8, 10, 12 m/s', W / 2, 16);
+
+      // Operating point
+      const Q_lpm = Q_m3s * 60000;
+      if (Q_lpm >= Q_lpm_min && Q_lpm <= Q_lpm_max &&
+          D_exact_mm >= D_mm_min && D_exact_mm <= D_mm_max) {
+        const px = xPos(Q_lpm), py = yPos(D_exact_mm);
+
+        ctx.strokeStyle = 'rgba(216,90,48,0.4)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(pad.left, py);  ctx.lineTo(px, py);       ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px, H - pad.bottom); ctx.lineTo(px, py); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Nominal size dot (blue)
+        if (D_nom_mm >= D_mm_min && D_nom_mm <= D_mm_max) {
+          const py2 = yPos(D_nom_mm);
+          ctx.beginPath(); ctx.arc(px, py2, 6, 0, 2 * Math.PI);
+          ctx.fillStyle = '#378add'; ctx.fill();
+          ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+          ctx.fillStyle = '#378add';
+          ctx.font = 'bold 11px Arial, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('DN ' + D_nom_mm, px + 9, py2 + 4);
+        }
+
+        // Exact diameter dot (orange)
+        ctx.beginPath(); ctx.arc(px, py, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = '#d85a30'; ctx.fill();
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.fillStyle = '#d85a30';
+        ctx.font = 'bold 11px Arial, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(D_exact_mm.toFixed(1) + ' mm', px + 9, py - 5);
+      }
+    }
+
+    // Wire up all inputs
+    ['hw-flow', 'hw-flow-unit', 'hw-vel', 'hw-vel-unit',
+     'hw-len', 'hw-len-unit', 'hw-fluid', 'hw-temp'].forEach(id => {
+      document.getElementById(id).addEventListener('input', hwCalc);
+    });
+
+    hwCalc();
+
+    // Redraw when the container is resized
+    if (window.ResizeObserver) {
+      new ResizeObserver(() => hwCalc())
+        .observe(document.getElementById('hw-canvas'));
+    }
+  })();
+  </script>
+</body>
+</html>

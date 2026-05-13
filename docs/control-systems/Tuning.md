@@ -92,3 +92,14 @@ Once gains are set analytically or by the above steps:
 Showing the magnitude and phase response of a simplified hydraulic servovalve actuator open-loop plant. The plot spans 0.1 to 1000 Hz, marks the hydraulic and valve resonances, and highlights the -180° phase boundary.
 
 <iframe src="../../media/hydr-tuning-bode.html" style="width: 100%; height: 600px; border: 0"></iframe>
+
+## PRBS example
+PRBS (pseudo-random binary sequence) is a deterministic, periodic signal that switches between two levels (+1 and −1) according to a shift-register sequence. Its power spectral density is nearly flat up to a certain frequency, then rolls off. It approximates white noise within a limited bandwidth, not across all frequencies.
+
+**Clock rate** is the most important setting. You need it high enough that the flat band covers your frequencies of interest — at minimum past ωv at 150 Hz, so 500 Hz clock is the practical minimum. 1 kHz is a comfortable choice. Notice how below 500 Hz the annotation warns you that ωv isn't covered.
+
+**Amplitude** should be kept small — ±3–5% of valve full scale is typical. Large enough to get a measurable response above the noise floor, small enough that the actuator stays in the linear region of the valve flow curve and doesn't move so much that it hits end stops or loads up against something.
+
+**Register length n** controls how long the sequence is before it repeats. Longer sequences give smoother, more averaged spectra (less variance in the PSD estimate), but take longer to acquire. For your 10 kHz controller, n=8 at a 1 kHz clock gives a 255-bit period lasting only 255 ms — you'd typically run several periods and average them. n=10 gives about 1 second per period at the same clock, which is often enough in a single pass.
+
+<iframe src="../../media/prbs.html" style="width: 100%; height: 700px; border: 0"></iframe>

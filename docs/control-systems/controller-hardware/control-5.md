@@ -19,12 +19,12 @@ The options for using servomotors/stepper motors or other output actuators will 
 
 | Channel | Function | Conditioner circuitry |
 | --- | --- | - |
-| AI 1 | Channel 1 (Force) | Instrumentation amp / direct |
-| AI 2 | Channel 2 (Displacement) | Instrumentation amp / direct |
-| AI 3 | Channel 3 (Strain) | Instrumentation amp / direct |
-| AI 4 | Channel 4 | direct |
-| AI 5 | Channel 5 | direct |
-| AI 6 | Channel 6 | direct |
+| AI 1 | Channel 1 (Force) | Instrumentation amp |
+| AI 2 | Channel 2 (Displacement) | Instrumentation amp |
+| AI 3 | Channel 3 | Instrumentation amp |
+| AI 4 | Channel 4 | Instrumentation amp |
+| AI 5 | Channel 5 | Instrumentation amp |
+| AI 6 | Channel 6 | Instrumentation amp |
 | AI 7 | SV actual current | Measured current in SV output loop (+/- 20 mA to +/- 300 mA) |
 | AI 8 | External FG | External setpoint input +/- 10 V |
 | AO 1 | Servovalve / servodrive | - |
@@ -43,12 +43,12 @@ The options for using servomotors/stepper motors or other output actuators will 
 | DO 3 | - | - |
 | DO 4 | - | - |
 
-Second analog input will no longer have a dedicated LVDT conditioner. The IC's used for this in Control 2 are no longer available and we will start to use temperature compensated magnetostrictive displacement transducers from now on. Existing actuators with LVDT's can be upgraded, or BICM's can be used instead.
+The second analog input will no longer have a dedicated LVDT conditioner. The IC's used for this in Control 2 are no longer available and we will start to use temperature compensated magnetostrictive displacement transducers from now on. Existing actuators with LVDT's can be upgraded, or BICM's can be used instead.
 
 ## Inputs 1-6 (Multi-function)
 Switchable input gain is desirable. Programmable gain instrumentation amplifiers are available ([AD8253](https://www.analog.com/media/en/technical-documentation/data-sheets/ad8253.pdf)) that make this easy. The amplifier gain is selectable between 1, 10, 100 and 1000. A gain of 1 is helpfull in reducing the need for switches to bypass the amplifier in direct mode. Gain of 10 will not be used that often, but a gain of 100 is intresting for silicon based strain gauge bridges with high k-factors.
 
-In Control 2, both bridge amplifier inputs had their own adjustable excitation power supplies. Using outputs of the DAC, the output voltage and offset could be set.
+In Control 2, both bridge amplifier inputs had their own adjustable excitation power supplies. Using outputs of the DAC, the output voltage and offset could be set. For Control 5 multiple excitation voltages will be available and a selection can be made simply by soldering to different contacts in the 15-pin sub-d connectors. For now ±1 V, ±3 V and ±10 V will be provided. To prevent interference each channel will get it's own output buffer amplifier.
 
 ## Analog outputs
 To send analog signals to external devices analog outputs are used. These outputs must be able to drive long cables (10 m or more). Care must be taken to maintain stability in the output buffer amplifiers inside the controller. With RG-57 cables the capacitance increases about 57 pF per meter. This can quickly become problematic and cause instability in the buffer amplifier. The instability is caused mostly by internal resistance in the output pin of the amplifier. This combined with the capacitive loading causes the phase margin to decrease with increased output capacitance.
@@ -64,3 +64,8 @@ The internal function generator will provide the following waveforms
 | Square | Square wave oscillation | Usefull for PID tuning |
 | Haversine | Sinewave oscillation offset by half the amplitude and starting at zero ($y(t)=\sin^2(x(t)/2)$, [More info](https://reference.wolfram.com/language/ref/Haversine.html.en)) |
 | White noise | Wideband noise with equal intensity at different frequencies | Usefull for system identification (See also [PRBS Test](https://www.yokogawa.com/library/resources/white-papers/pid-tuning-in-distributed-control-systems/)) |
+
+## Parameter sweeping
+Sometimes researchers want to be able to sweep accros a certain frequency range, for instance to scan for resonant modes. Currently the controller firmware doesn't support this. Adding this will be usefull. 
+
+We will be implementing a broader way to sweep not only frequency but also amplitude and maybe other parameters as well.
